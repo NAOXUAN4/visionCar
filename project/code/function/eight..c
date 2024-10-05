@@ -1537,12 +1537,12 @@ void deter_roadState()
 	{
 		int close = hightest + (image_h - hightest) /4*3;
 		int far = hightest + (image_h - hightest) /4;
-		if(l_border[close] < image_w / 2 && l_border[far] >= image_w / 2] 
+		if(l_border[close] < image_w / 2 && l_border[far] >= image_w / 2
 			&& r_border[close] > image_w / 2 && r_border[far] >= image_w / 2)
 		{
 			road_state = ROAD_CURVE_R;
 		}
-		else if (l_border[close] < image_w / 2 && l_border[far] <= image_w / 2] 
+		else if (l_border[close] < image_w / 2 && l_border[far] <= image_w / 2
 			&& r_border[close] > image_w / 2 && r_border[far] <= image_w / 2)
 		{
 			road_state = ROAD_CURVE_L;
