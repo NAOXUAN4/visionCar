@@ -16,8 +16,6 @@ typedef unsigned           int uint32;
 #define uesr_BLUE    0X001F    //蓝色
 
 
-
-
 //宏定义
 #define image_h	60//图像高度
 #define image_w	60//图像宽度
@@ -36,6 +34,7 @@ extern uint16 output_image[image_h][image_w];  //输出彩色图像
 
 
 extern void eight_all_in_one(uint8 (*)[image_w]); //直接在中断或循环里调用此程序就可以循环执行了
+extern uint8 road_state;
 
 #endif /*_IMAGE_H*/
 

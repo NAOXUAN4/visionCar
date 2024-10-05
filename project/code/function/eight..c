@@ -10,7 +10,7 @@
 #include "zf_common_headfile.h"
 
 
-
+uint8 road_state = 0;
 
 
 void test(uint8 [image_h][image_w]);
@@ -1163,6 +1163,7 @@ void calculate_s_i(uint8 start, uint8 end, uint8 *border, float *slope_rate, flo
 *     -<em>false</em> fail
 *     -<em>true</em> succeed
  */
+bool isCORSS = false;
 bool is_cross_line(uint16 (*point_border_L)[2],uint16 (*point_border_R)[2], uint16 n_L, uint16 n_R); //判断是否为十字第二条件（n 个同高度的消失点）
 void cross_fill(uint8(*image)[image_w], uint8 *l_border, uint8 *r_border, uint16 total_num_l, uint16 total_num_r,
 										 uint16 *dir_l, uint16 *dir_r, uint16(*points_l)[2], uint16(*points_r)[2])
@@ -1194,6 +1195,8 @@ void cross_fill(uint8(*image)[image_w], uint8 *l_border, uint8 *r_border, uint16
 	if (break_num_l && break_num_r 
 			&& is_cross_line(points_l,points_r,data_stastics_l,data_stastics_r))//进入十字补条件1：两边生长方向都符合条件，条件2：两边有n个等高的消失线          // && image[image_h - 1][4] && image[image_h - 1][image_w - 4]
 	{
+		isCORSS = true;   //十字标志位
+
 		//计算斜率
 
 //		printf("\n发现十字 进行十字补线\n");
@@ -1496,31 +1499,71 @@ void draw_output_image()
 	}
 
 
-	//左边界
-	for (int i = image_h - 1; i > hightest; i--)
-	{
-	    if(l_border[i]<image_w)
-	        output_image[i][l_border[i]] = RGB565_RED;
-		
-	}
-	//右边界
+	
 	for (int i = image_h-1; i > hightest; i--)
 	{
+		//左边界
+		if(l_border[i]<image_w)
+	        output_image[i][l_border[i]] = RGB565_RED;
+
+		//右边界
 	    if(r_border[i]<image_w)
 	        output_image[i][r_border[i]] = RGB565_GREEN;
-	}
-	//中线
-	for (int i = image_h; i > hightest; i--)
-	{
-
-	        output_image[i][center_line[i]] = RGB565_BLUE;
+		
+		
 	}
 	
+	for (int i = image_h; i > hightest; i--)
+	{
+		//中线
+		output_image[i][center_line[i]] = RGB565_BLUE;
+	        
+	}
+	
+}
+
+/**
+ * ----------------------------------------------------------
+ * @name deter_roadState()
+ * @brief 判断道路状态(十字,直道,弯道)
+ * @author Yian
+ * @date 2024年10月5日
+ * @note 
+**/
+void deter_roadState()
+{
+
+	if(!isCORSS && !road_state)
+	{
+		int close = hightest + (image_h - hightest) /4*3;
+		int far = hightest + (image_h - hightest) /4;
+		if(l_border[close] < image_w / 2 && l_border[far] >= image_w / 2] 
+			&& r_border[close] > image_w / 2 && r_border[far] >= image_w / 2)
+		{
+			road_state = ROAD_CURVE_R;
+		}
+		else if (l_border[close] < image_w / 2 && l_border[far] <= image_w / 2] 
+			&& r_border[close] > image_w / 2 && r_border[far] <= image_w / 2)
+		{
+			road_state = ROAD_CURVE_L;
+		}
+		else
+		{
+			road_state = ROAD_STRAIGHT;
+		}
+		
+	}
+	road_state = ROAD_CORSSROAD;
+	
+
 }
 
 void eight_init()
 {
     //全局变量初始化
+	road_state = 0;
+	isCORSS = false;
+
     memset(bin_image,0,sizeof(bin_image));   //初始图像数组
 
     memset(bound_Points_L,0,sizeof(bound_Points_L));  //八邻域爬线存储数组
@@ -1556,6 +1599,7 @@ void eight_all_in_one(uint8 (*input_image)[image_w]){
     image_cpy(input_image);
     image_process();
 	draw_output_image();
+	deter_roadState();
     angleErr_cal(WEIGHT_CURVE, center_line, image_h-2, hightest);
 //    angleErr_slope(center_line, image_h-2, hightest);
 }

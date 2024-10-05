@@ -22,6 +22,8 @@ extern void angleErr_cal(uint8,uint8*,uint8,uint8);
 extern void angleErr_slope(uint8* ,uint8 , uint8 );
 extern float angle_Err;
 
+extern uint8 road_state
+
 
 
 

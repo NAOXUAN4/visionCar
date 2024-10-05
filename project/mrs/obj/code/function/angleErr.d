@@ -1,14 +1,14 @@
 code/function/angleErr.o: \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/Seekfree_CH32V307VCT6_Opensource_Library/project/code/function/angleErr.c \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/Seekfree_CH32V307VCT6_Opensource_Library/project/code/function/angleErr.h \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/Seekfree_CH32V307VCT6_Opensource_Library/project/code/function/eight.h \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/Seekfree_CH32V307VCT6_Opensource_Library/project/code/function/lib/Slope_Calculate.h \
- e:\projectlibrary\cybercar\seekfree_ch32v307vct6_opensource_library(智能车摄像头)\seekfree_ch32v307vct6_opensource_library\project\code\function\angleerr.h
+ H:/projectLib/visionCar_v1.0/project/code/function/angleErr.c \
+ H:/projectLib/visionCar_v1.0/project/code/function/angleErr.h \
+ H:/projectLib/visionCar_v1.0/project/code/function/eight.h \
+ H:/projectLib/visionCar_v1.0/project/code/function/lib/Slope_Calculate.h \
+ h:\projectlib\visioncar_v1.0\project\code\function\angleerr.h
 
-E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/Seekfree_CH32V307VCT6_Opensource_Library/project/code/function/angleErr.h:
+H:/projectLib/visionCar_v1.0/project/code/function/angleErr.h:
 
-E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/Seekfree_CH32V307VCT6_Opensource_Library/project/code/function/eight.h:
+H:/projectLib/visionCar_v1.0/project/code/function/eight.h:
 
-E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/Seekfree_CH32V307VCT6_Opensource_Library/project/code/function/lib/Slope_Calculate.h:
+H:/projectLib/visionCar_v1.0/project/code/function/lib/Slope_Calculate.h:
 
-e:\projectlibrary\cybercar\seekfree_ch32v307vct6_opensource_library(智能车摄像头)\seekfree_ch32v307vct6_opensource_library\project\code\function\angleerr.h:
+h:\projectlib\visioncar_v1.0\project\code\function\angleerr.h:

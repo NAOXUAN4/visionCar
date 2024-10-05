@@ -1,14 +1,14 @@
 sdk/Peripheral/ch32v30x_fsmc.o: \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/Seekfree_CH32V307VCT6_Opensource_Library/libraries/sdk/Peripheral/ch32v30x_fsmc.c \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/Seekfree_CH32V307VCT6_Opensource_Library/libraries/sdk/Peripheral/ch32v30x_fsmc.h \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/Seekfree_CH32V307VCT6_Opensource_Library/libraries/sdk/Peripheral/ch32v30x.h \
- E:\proJectLibrary\cybercar\Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)\Seekfree_CH32V307VCT6_Opensource_Library\libraries\sdk\Core/core_riscv.h \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/Seekfree_CH32V307VCT6_Opensource_Library/libraries/sdk/Peripheral/ch32v30x_rcc.h
+ H:/projectLib/visionCar_v1.0/libraries/sdk/Peripheral/ch32v30x_fsmc.c \
+ H:/projectLib/visionCar_v1.0/libraries/sdk/Peripheral/ch32v30x_fsmc.h \
+ H:/projectLib/visionCar_v1.0/libraries/sdk/Peripheral/ch32v30x.h \
+ H:\projectLib\visionCar_v1.0\libraries\sdk\Core/core_riscv.h \
+ H:/projectLib/visionCar_v1.0/libraries/sdk/Peripheral/ch32v30x_rcc.h
 
-E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/Seekfree_CH32V307VCT6_Opensource_Library/libraries/sdk/Peripheral/ch32v30x_fsmc.h:
+H:/projectLib/visionCar_v1.0/libraries/sdk/Peripheral/ch32v30x_fsmc.h:
 
-E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/Seekfree_CH32V307VCT6_Opensource_Library/libraries/sdk/Peripheral/ch32v30x.h:
+H:/projectLib/visionCar_v1.0/libraries/sdk/Peripheral/ch32v30x.h:
 
-E:\proJectLibrary\cybercar\Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)\Seekfree_CH32V307VCT6_Opensource_Library\libraries\sdk\Core/core_riscv.h:
+H:\projectLib\visionCar_v1.0\libraries\sdk\Core/core_riscv.h:
 
-E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/Seekfree_CH32V307VCT6_Opensource_Library/libraries/sdk/Peripheral/ch32v30x_rcc.h:
+H:/projectLib/visionCar_v1.0/libraries/sdk/Peripheral/ch32v30x_rcc.h:
