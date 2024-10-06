@@ -88,7 +88,6 @@ void UI_cursor_active(uint8 key)
     case STATE_CAMERAONLY:
         switch(key){
         case KEY_BACK:
-
             Curser_Now = state_now - 2;  //cursor 0~n-1,state 1~n  ，又因为state1 是home 所以-2
             state_now = STATE_HOME;
             UI_Update(state_now);
@@ -127,6 +126,10 @@ void UI_INFO()
 {
     tft180_full(RGB565_GREEN);
     tft180_show_string(0, 30, "INFO");
+    if(road_state == ROAD_CORSSROAD)
+    {
+        tft180_full(RGB565_GREEN);
+    }
 }
 
 void UI_CameraONLY()
@@ -136,5 +139,12 @@ void UI_CameraONLY()
     tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
     tft180_show_rgb565_image(65, 0, output_image, 60, 60, 60, 60, 1);
     tft180_show_float(65, 65, angle_Err, 3, 4);
+    switch(road_state){
+    case ROAD_CORSSROAD: tft180_full(RGB565_GREEN);break;
+    case ROAD_CURVE_L: tft180_full(RGB565_RED);break;
+    case ROAD_CURVE_R:tft180_full(RGB565_PURPLE);break;
+    case ROAD_STRAIGHT:tft180_full(RGB565_YELLOW);break;
+    default:break;
+    }
 
 }

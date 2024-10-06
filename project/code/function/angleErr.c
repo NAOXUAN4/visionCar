@@ -10,7 +10,7 @@
 #include "lib/Slope_Calculate.h"
 #include <stdio.h>
 
-float midline_fff, midline_ff, midline_f, lineSum, weightSum,middleStandard = image_w>>1;
+float midline_fff, midline_ff, weightSum,middleStandard = image_w>>1;
 float angle_Err;
 
 
@@ -72,6 +72,8 @@ float atan(float x)
 **/
 void angleErr_cal(uint8 weight_num, uint8* middleLine, uint8 lo, uint8 hi){
 
+    float midline_f, lineSum;
+
 
     uint8* weight;
     switch (weight_num)
@@ -96,10 +98,10 @@ void angleErr_cal(uint8 weight_num, uint8* middleLine, uint8 lo, uint8 hi){
     } 
 
     angle_Err = (float)lineSum / weightSum - middleStandard;
-    midline_fff = midline_ff;
-    midline_ff  = midline_f;
-    midline_f = angle_Err;
-    angle_Err = midline_fff * 0.50f + midline_ff * 0.30f + midline_f * 0.20f;
+//    midline_fff = midline_ff;
+//    midline_ff  = midline_f;
+//    midline_f = angle_Err;
+//    angle_Err = midline_fff * 0.50f + midline_ff * 0.30f + midline_f * 0.20f;
 
 }
 

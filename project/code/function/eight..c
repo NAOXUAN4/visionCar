@@ -182,7 +182,7 @@ int16 limit1(int16 x, int16 y)
 日期：24/9/3
 注释：已在开头声明
 */
-uint8 hightest = 10;//定义一个最高行，tip：这里的最高指的是y值的最小
+uint8 hightest = 20;//定义一个最高行，tip：这里的最高指的是y值的最小
 uint8 int2char[] = {'.','#','=','&'};
 uint8 wb[image_h][image_w] = {{0}};
 
@@ -857,36 +857,6 @@ void kernel_smooth(uint16 *input, uint16 *output, uint8 kernel_times,uint8 lengt
 	memcpy(output, smoothed_directions, length * sizeof(uint16)); //结果赋值给output
 
 }
-// void kernel_smooth(uint8 *input, uint8 *output , uint8 kernel_times)
-// {
-
-//     int directions[] = {4, 4, 4, 4, 4, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-//                          1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3,
-//                           3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 5, 4, 5, 5, 5,
-//                            5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5,
-//                             5, 5, 5, 5, 5, 5, 5, 5, 5, 4, 3, 3, 4, 3, 3, 3, 3, 4,
-//                              4, 3, 4, 3, 4, 3, 4, 3, 4, 3};
-//     int length = sizeof(directions) / sizeof(directions[0]);
-//     int smoothed_directions[length];
-
-
-// 	for (uint8 i = 0; i < kernel_times; i++)
-// 	{
-// 		/* code */
-// 	}
-	
-//     mode_convolve(directions, smoothed_directions, length);
-//     mode_convolve(smoothed_directions, smoothed_directions, length);
-//     mode_convolve(smoothed_directions, smoothed_directions, length);
-    
-    
-
-
-//     for (int i = 0; i < length; i++) {
-//         printf("%d ", smoothed_directions[i]);
-//     }
-
-// }
 
 
 /*
@@ -988,13 +958,13 @@ void image_filter(uint8(*bin_image)[image_w])//形态学滤波，简单来说就
 			if (num >= threshold_max && bin_image[i][j] == 0)
 			{
 
-				bin_image[i][j] = 255;//白  可以搞成宏定义，方便更改
+				bin_image[i][j] = white_pixel;//白  可以搞成宏定义，方便更改
 
 			}
-			if (num <= threshold_min && bin_image[i][j] == 255)
+			if (num <= threshold_min && bin_image[i][j] == white_pixel)
 			{
 
-				bin_image[i][j] = 0;//黑
+				bin_image[i][j] = black_pixel;//黑
 
 			}
 
@@ -1553,7 +1523,11 @@ void deter_roadState()
 		}
 		
 	}
-	road_state = ROAD_CORSSROAD;
+	else if (isCORSS) {
+	    road_state = ROAD_CORSSROAD;
+
+    }
+
 	
 
 }
