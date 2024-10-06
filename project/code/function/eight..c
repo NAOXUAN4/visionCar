@@ -182,7 +182,7 @@ int16 limit1(int16 x, int16 y)
 日期：24/9/3
 注释：已在开头声明
 */
-uint8 hightest = 20;//定义一个最高行，tip：这里的最高指的是y值的最小
+uint8 hightest = 25;//定义一个最高行，tip：这里的最高指的是y值的最小
 uint8 int2char[] = {'.','#','=','&'};
 uint8 wb[image_h][image_w] = {{0}};
 
@@ -393,8 +393,8 @@ uint8 bound_Points_L[2][100];
 uint8 bound_Points_R[2][100];
 
 int EIGHT_SEARCH_CL[2][9] = {
-    9,0,-1,-1,-1,0,+1,+1,+1,
-    9,-1,-1,0,+1,+1,+1,0,-1
+    {9,0,-1,-1,-1,0,+1,+1,+1},
+    {9,-1,-1,0,+1,+1,+1,0,-1}
     };  //x1,x2,x3,x4...    y1.y2.....
 
 //2 3 4 
@@ -1220,8 +1220,8 @@ void cross_fill(uint8(*image)[image_w], uint8 *l_border, uint8 *r_border, uint16
 函数名称：bool is_cross_line(uint8 *image,uint8 *border,uint16 data_statics)
 函数功能：状态机十字补线状态入口，检测两边有同高的消失线
 函数参数：
-//*point_border_L/R 左右边边界首地址  (point_l[image_h][2])
-//n_L/R左右边数据统计
+//// *point_border_L/R 左右边边界首地址  (point_l[image_h][2])
+// n_L/R左右边数据统计
 返回值：true/false
 作者：yian
 日期：2024年9月6日
@@ -1317,37 +1317,51 @@ void get_mid(uint8 *l_border, uint8 *r_border,uint8 *center_line,uint8 hightest)
 {
     for (uint8 i = hightest; i < image_h - 2; i++)
     {
-
-        //printf("line: %d L: %d,R: %d   ",i,l_border[i] ,r_border[i]);
         if(  ((l_border[i] != 255) && (r_border[i] != 255)) ){
             //printf("st 1\n");
             center_line[i] = (l_border[i]+r_border[i])/2; // 如果两端都有二分法
-            // printf("左右存在 %d\n",center_line[i]);
+
         }
         else if (r_border[i] == 255 && i!=hightest)  //右端消失
         {
-            //printf("st 2Rmiss");
-            // cout<<"hereR MISS,i = "<<i<<endl;
+
             center_line[i] = center_line[i-1]+(l_border[i]-l_border[i-1]);
         }
         else if (l_border[i] == 255 && i!=hightest) //左端消失
         {
-            //printf("st 2Lmiss");
-            // cout<<"hereL MISS,i = "<<i<<endl;
+
             center_line[i] = center_line[i-1]+(r_border[i]-r_border[i-1]);  //平移
         }
         else
         {
-            if(l_border[i]==255 && r_border[i]==255){center_line[i]=image_w/2;}
+            if(l_border[i]==255 && r_border[i]==255){center_line[i] = 255;}
             else{center_line[i]= l_border[i]>r_border[i]?r_border[i]:l_border[i];}
 
         }
-        //printf("\n");
 
         
     }
 
 }
+
+/**
+ * ----------------------------------------------------------
+ * @name 
+ * @brief 中线错误排除、清洗函数
+ * @author yian
+ * @date 2024年10月7日
+ * @note 
+**/
+//void midLine_err_clean(uint8 *center_line)
+//{
+//	for (int i = ; i < count; i++)
+//	{
+//		/* co
+//	}
+//
+//}
+
+
 
 
 /*
@@ -1361,7 +1375,6 @@ example： image_process();
  */
 void image_process(void)
 {
-	
 
 	// /*这是离线调试用的*/
 	// Get_image(mt9v03x_image);
@@ -1375,36 +1388,9 @@ void image_process(void)
 	if (detectStartPoint(image_h - 2))//找到起点了，再执行八领域，没找到就一直找   //get_start_point(image_h - 2)
 	{
 		eIGHT_neighbor((uint16)USE_num, bin_image, &data_stastics_l, &data_stastics_r, start_point_l[0], start_point_l[1], start_point_r[0], start_point_r[1], &hightest);
-//		printf("左边界点数:%d 右边界点数:%d\n", data_stastics_l, data_stastics_r);
-//		printf("八邻域已结束\n");
-//
-//		printf("dir[](生长方向数组):\n");
-//		for (int i = 0; i < data_stastics_l; i++)
-//		{
-//			printf("%d ", dir_l[i]);
-//		}
-//		printf("\n");
-//		for (int i = 0; i < data_stastics_r; i++)
-//		{
-//			printf("%d ", dir_r[i]);
-//		}
-//
-//
-//		printf("\n八方向游标:\n2 3 4\n1 0 5\n8 7 6\n");
-		
 		
 		kernel_smooth(dir_l, dir_l ,2, data_stastics_l);  
 		kernel_smooth(dir_r, dir_r, 2, data_stastics_r);
-//		printf("平滑完成\n");
-//		for (int i = 0; i < data_stastics_l; i++)
-//		{
-//			printf("%d ", dir_l[i]);
-//		}printf("\n");
-//		for (int i = 0; i < data_stastics_r; i++)
-//		{
-//			printf("%d ", dir_r[i]);
-//		}printf("\n");
-//
 
 		// 从爬取的边界线内提取边线 ， 这个才是最终有用的边线
 		get_left(data_stastics_l,image_h - 2);
@@ -1412,38 +1398,15 @@ void image_process(void)
 		
 		//处理函数放这里，不要放到if外面去了，不要放到if外面去了，不要放到if外面去了，重要的事说三遍
 
-//		printf("\n十字 mode:%d\n",is_cross_line(points_l,points_r,data_stastics_l,data_stastics_r)?1:0);
-//
-//
-//
-//		printf("进入十字补线\n");
-//		cross_fill(bin_image, l_border, r_border, data_stastics_l, data_stastics_r, dir_l, dir_r, points_l, points_r);
+
 //		//十字补线
 
 		exclude_remote_miss(l_border, r_border);
 
-//		printf("最终边线:l/R:\n");
-//		for (size_t i = image_h - 1; i > hightest; i--)
-//		{
-//			printf("%d ",l_border[i] );
-//
-//		}
-//		printf("\n");
-//		for (size_t i = image_h - 1; i > hightest; i--)
-//		{
-//			printf("%d ",r_border[i] );
-//
-//		}
-//
-//
-//		printf("\n中线:\n");
 		get_mid(l_border, r_border, center_line, hightest);
-//		for (size_t i = image_h -1; i > hightest; i--)
-//		{
-//			printf("%d ",center_line[i] );
-//		}
-//		printf("\n");
-		
+
+
+	
 	}
 }
 /**
@@ -1461,11 +1424,11 @@ void draw_output_image()
 	for (int i = 0; i < data_stastics_l; i++)
 	{
 
-		output_image[points_l[i][1]][points_l[i][0]] = RGB565_WHITE;
+		output_image[points_l[i][1]][points_l[i][0]] = RGB565_GRAY;
 	}
 	for (int i = 0; i < data_stastics_r; i++)
 	{
-		output_image[points_r[i][1]][points_r[i][0]] = RGB565_WHITE;
+		output_image[points_r[i][1]][points_r[i][0]] = RGB565_GRAY;
 	}
 
 
@@ -1473,23 +1436,22 @@ void draw_output_image()
 	for (int i = image_h-1; i > hightest; i--)
 	{
 		//左边界
-		if(l_border[i]<image_w)
+		if(l_border[i]<image_w){
 	        output_image[i][l_border[i]] = RGB565_RED;
+		}
 
 		//右边界
-	    if(r_border[i]<image_w)
+	    if(r_border[i]<image_w){
 	        output_image[i][r_border[i]] = RGB565_GREEN;
+	    }
+
+			//中线
+		if (center_line[i]<image_w){
+			output_image[i][center_line[i]] = RGB565_BLUE;
+		}
 		
 		
 	}
-	
-	for (int i = image_h; i > hightest; i--)
-	{
-		//中线
-		output_image[i][center_line[i]] = RGB565_BLUE;
-	        
-	}
-	
 }
 
 /**
@@ -1500,36 +1462,38 @@ void draw_output_image()
  * @date 2024年10月5日
  * @note 
 **/
+bool angleVaild = 0;
 void deter_roadState()
 {
-
-	if(!isCORSS && !road_state)
+//	if(data_stastics_l > 3 || data_stastics_r > 3)
+    if(angleVaild)
 	{
+		if(!isCORSS && !road_state)
+		{
+
 		int close = hightest + (image_h - hightest) /4*3;
 		int far = hightest + (image_h - hightest) /4;
 		if(l_border[close] < image_w / 2 && l_border[far] >= image_w / 2
 			&& r_border[close] > image_w / 2 && r_border[far] >= image_w / 2)
-		{
-			road_state = ROAD_CURVE_R;
-		}
+			{
+				road_state = ROAD_CURVE_R;
+			}
 		else if (l_border[close] < image_w / 2 && l_border[far] <= image_w / 2
 			&& r_border[close] > image_w / 2 && r_border[far] <= image_w / 2)
-		{
-			road_state = ROAD_CURVE_L;
-		}
+			{
+				road_state = ROAD_CURVE_L;
+			}
 		else
-		{
-			road_state = ROAD_STRAIGHT;
+			{
+				road_state = ROAD_STRAIGHT;
+			}
+
 		}
-		
+		else if (isCORSS) {
+			road_state = ROAD_CORSSROAD;
+
+		}
 	}
-	else if (isCORSS) {
-	    road_state = ROAD_CORSSROAD;
-
-    }
-
-	
-
 }
 
 void eight_init()
@@ -1537,6 +1501,7 @@ void eight_init()
     //全局变量初始化
 	road_state = 0;
 	isCORSS = false;
+	angleVaild = 0;
 
     memset(bin_image,0,sizeof(bin_image));   //初始图像数组
 
@@ -1572,10 +1537,12 @@ void eight_all_in_one(uint8 (*input_image)[image_w]){
 	eight_init();
     image_cpy(input_image);
     image_process();
-	draw_output_image();
-	deter_roadState();
-    angleErr_cal(WEIGHT_CURVE, center_line, image_h-2, hightest);
+
+    angleVaild = angleErr_cal(WEIGHT_CURVE, center_line, image_h-2, hightest);
 //    angleErr_slope(center_line, image_h-2, hightest);
+
+    draw_output_image();
+    deter_roadState();
 }
 
 

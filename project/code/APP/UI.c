@@ -60,10 +60,12 @@ void UI_cursor_render(uint8 Line)
  **/
 void UI_cursor_active(uint8 key)
 {
-    tft180_full(RGB565_BLUE);
+
     switch (state_now)
     {
+
     case STATE_HOME: // 当目前处于home
+        tft180_full(RGB565_BLUE);
         switch (key)
         {
         case KEY_DOWM:   //向下移动光标，不修改UI状态
@@ -126,10 +128,6 @@ void UI_INFO()
 {
     tft180_full(RGB565_GREEN);
     tft180_show_string(0, 30, "INFO");
-    if(road_state == ROAD_CORSSROAD)
-    {
-        tft180_full(RGB565_GREEN);
-    }
 }
 
 void UI_CameraONLY()
@@ -137,14 +135,19 @@ void UI_CameraONLY()
 
     tft180_displayimage03x(mt9v03x_image[0], 60, 60);//原始图像
     tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
-    tft180_show_rgb565_image(65, 0, output_image, 60, 60, 60, 60, 1);
+    tft180_show_rgb565_image(65, 0, (const uint16_t*)output_image, 60, 60, 60, 60, 1);
+
     tft180_show_float(65, 65, angle_Err, 3, 4);
+
+
+    //道路状态显示
     switch(road_state){
-    case ROAD_CORSSROAD: tft180_full(RGB565_GREEN);break;
-    case ROAD_CURVE_L: tft180_full(RGB565_RED);break;
-    case ROAD_CURVE_R:tft180_full(RGB565_PURPLE);break;
-    case ROAD_STRAIGHT:tft180_full(RGB565_YELLOW);break;
-    default:break;
+    case ROAD_CORSSROAD:tft180_show_string(140, 10, "+");break;
+    case ROAD_CURVE_L: tft180_show_string(140, 10, ")");break;
+    case ROAD_CURVE_R:tft180_show_string(140, 10, "(");break;
+    case ROAD_STRAIGHT:tft180_show_string(140, 10, "|");break;
+    default:tft180_show_string(140, 10, "X") ;break;
+
     }
 
 }

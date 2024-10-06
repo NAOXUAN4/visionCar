@@ -11,14 +11,17 @@
 
 //#include "camera/cam_preprocess.h"
 #include "eight.h"
+#include <stdbool.h>
 
-
+#define angleErr_range 20.0 //angleErr限幅
 
 #define WEIGHT_STRETCH 1
 #define WEIGHT_CURVE 2
 
 
-extern void angleErr_cal(uint8,uint8*,uint8,uint8);
+
+
+extern bool angleErr_cal(uint8,uint8*,uint8,uint8);
 extern void angleErr_slope(uint8* ,uint8 , uint8 );
 extern float angle_Err;
 

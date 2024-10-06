@@ -9,8 +9,9 @@
 #include "angleErr.h"
 #include "lib/Slope_Calculate.h"
 #include <stdio.h>
+#include <stdbool.h>
 
-float midline_fff, midline_ff, weightSum,middleStandard = image_w>>1;
+float midline_f,midline_fff, midline_ff, weightSum,middleStandard = image_w>>1;
 float angle_Err;
 
 
@@ -35,25 +36,25 @@ uint8  weight2[60] = {                        //0为图像最顶行
  * @date 2024年9月22日
  * @note 
 **/
-float atan(float x) 
-{
-    int precision = 100;//控制迭代次数/精度
-    float sum = 0.0;
-    float term = x;
-    float xSquared = x * x;
-    int sign = 1;
- 
-    for (int n = 0; n < precision; n++) {
-        if (n != 0) {
-            term *= xSquared;
-        }
-        sum += sign * term / (2 * n + 1);
-        sign = -sign;
-    }
-	if(fabs(x) < 1) return sum;//绝对值在0-1，直接返回泰勒展开计算值
-	else return (x > 0 ? HALF_PI  : - HALF_PI) - atan(1 / x);//绝对值大于1时，采用atan的性质进行转换，因为当x值较大时，会存在难以收敛、精度降低的情况
-
-}
+//float atan(float x)
+//{
+//    int precision = 100;//控制迭代次数/精度
+//    float sum = 0.0;
+//    float term = x;
+//    float xSquared = x * x;
+//    int sign = 1;
+//
+//    for (int n = 0; n < precision; n++) {
+//        if (n != 0) {
+//            term *= xSquared;
+//        }
+//        sum += sign * term / (2 * n + 1);
+//        sign = -sign;
+//    }
+//	if(fabs(x) < 1) return sum;//绝对值在0-1，直接返回泰勒展开计算值
+//	else return (x > 0 ? HALF_PI  : - HALF_PI) - atan(1 / x);//绝对值大于1时，采用atan的性质进行转换，因为当x值较大时，会存在难以收敛、精度降低的情况
+//
+//}
 
 
 
@@ -70,9 +71,10 @@ float atan(float x)
  * @date 2024年9月22日
  * @note 
 **/
-void angleErr_cal(uint8 weight_num, uint8* middleLine, uint8 lo, uint8 hi){
+bool angleErr_cal(uint8 weight_num, uint8* middleLine, uint8 lo, uint8 hi){
 
-    float midline_f, lineSum;
+    float  weightSum,lineSum;
+    bool isValid = false;
 
 
     uint8* weight;
@@ -88,21 +90,27 @@ void angleErr_cal(uint8 weight_num, uint8* middleLine, uint8 lo, uint8 hi){
             weight = weight1;
             break;
     }
-
+    int sum = 0;
     for(int i = lo; i > hi + 1; i --){   //从下往上
         if(middleLine[i]<image_w)
         {
             weightSum += weight[i];
             lineSum += weight[i] * middleLine[i];
+            sum++;
+            if(sum>5) isValid = 1;
         }
     } 
 
-    angle_Err = (float)lineSum / weightSum - middleStandard;
-//    midline_fff = midline_ff;
-//    midline_ff  = midline_f;
-//    midline_f = angle_Err;
-//    angle_Err = midline_fff * 0.50f + midline_ff * 0.30f + midline_f * 0.20f;
 
+    angle_Err = (float)lineSum / weightSum - middleStandard;
+    midline_fff = midline_ff;
+    midline_ff  = midline_f;
+    midline_f = angle_Err;
+    angle_Err = midline_fff * 0.50f + midline_ff * 0.30f + midline_f * 0.20f;
+    angle_Err = angle_Err > 0 ? angle_Err > (float)angleErr_range ? (float)angleErr_range : angle_Err
+                     : - angle_Err > (float)angleErr_range ? (float)(- angleErr_range) : angle_Err;
+
+    return isValid;
 }
 
 
@@ -119,23 +127,23 @@ float slope;
  * @date 2024年9月22日
  * @note 使用lib中的Slope_CAl计算，坐标系需要变换，把底层中点设置为（0，0）
 **/
-void angleErr_slope(uint8* middleLine,uint8 lo, uint8 hi){
-
-     
-
-
-    for (int i = lo; i > lo - 20; i--) { 
-        if (middleLine[i] > 0){ x[num++] = middleLine[i] - image_w/2 ;y[num] = image_h - i;}     //1.去杂   2.变换坐标系
-    }
-
-    slope = Slope_Cal(num, x, y);
-
-    float angle_slope = atan(slope);
-    
-
-    printf("angleErr_ori: %f\n", angle_Err);
-    printf("angle_slope: %f\n", angle_slope);
-    angle_Err = 0.8* angle_Err + 0.2 * angle_slope;   //比例平滑
-}
+//void angleErr_slope(uint8* middleLine,uint8 lo, uint8 hi){
+//
+//
+//
+//
+//    for (int i = lo; i > lo - 20; i--) {
+//        if (middleLine[i] > 0){ x[num++] = middleLine[i] - image_w/2 ;y[num] = image_h - i;}     //1.去杂   2.变换坐标系
+//    }
+//
+//    slope = Slope_Cal(num, x, y);
+//
+//    float angle_slope = atan(slope);
+//
+//
+//    printf("angleErr_ori: %f\n", angle_Err);
+//    printf("angle_slope: %f\n", angle_slope);
+//    angle_Err = 0.8* angle_Err + 0.2 * angle_slope;   //比例平滑
+//}
 
 

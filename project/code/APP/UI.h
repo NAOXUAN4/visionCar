@@ -17,10 +17,10 @@
 /*
  * 真正的key 映射
  */
-#define KEY_DOWM 3
-#define KEY_UP 5
+#define KEY_DOWM 5
+#define KEY_UP 3
 #define KEY_COMFIRM 2
-#define KEY_BACK 5
+#define KEY_BACK 1
 
 
 
