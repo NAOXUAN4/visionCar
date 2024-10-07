@@ -13,4 +13,4 @@ MCU=CH32V307VCT6
 Mcu Type=CH32V30x
 Link=WCH-Link
 CLKSpeed=1
-Target Path=obj\vision_car_v1.0.hex
+Target Path=obj/vision_car_main.hex

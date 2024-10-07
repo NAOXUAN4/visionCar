@@ -1,2 +1,2 @@
 code/function/lib/Slope_Calculate.o: \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/visionCar_v1.0/project/code/function/lib/Slope_Calculate.c
+ E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/visionCar_main/project/code/function/lib/Slope_Calculate.c

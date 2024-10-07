@@ -13,10 +13,10 @@
 
 uint8 Curser_Now = 0;
 
-uint8 menu_str[4][3] = {2,3,4,
-                        0,0,0,
-                        0,0,0,
-                        0,0,0};   //菜单关系映射表
+uint8 menu_str[4][3] = {{2,3,4},
+                        {0,0,0},
+                        {0,0,0},
+                        {0,0,0}};  //菜单关系映射表
 
 void UI_Init(void)
 {
@@ -119,15 +119,21 @@ void UI_Home() // HOME_STATE
 
 void UI_QucikRun()
 {
-    tft180_full(RGB565_BLUE);
-    tft180_show_string(0, 30, "QR");
+    tft180_displayimage03x(mt9v03x_image[0], 60, 60);
+    tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
+    tft180_show_rgb565_image(65, 0, output_image, 60, 60, 60, 60, 1);
+    tft180_show_float(65, 65, angle_Err, 3, 4);
+    tft180_show_float(65, 85, move_angle, 2, 3);
 
 }
 
 void UI_INFO()
 {
-    tft180_full(RGB565_GREEN);
-    tft180_show_string(0, 30, "INFO");
+
+    tft180_show_string(0, 0, "left:");
+    tft180_show_int(40, 0, left_speed, 8);
+    tft180_show_string(0, 20, "right:");
+    tft180_show_int(40, 20,righ_speed, 8);
 }
 
 void UI_CameraONLY()

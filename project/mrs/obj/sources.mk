@@ -24,6 +24,8 @@ C_DEPS :=
 # Every subdirectory with source files must be described here
 SUBDIRS := \
 code/APP \
+code/BSP \
+code/CPP \
 code \
 code/function \
 code/function/lib \

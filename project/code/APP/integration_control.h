@@ -4,7 +4,8 @@
 
 
 extern uint8 state_now;   //定义要广播的系统状态
-
+extern int left_speed,righ_speed;
+extern volatile float move_angle;
 
 void inte_control_init(void);
 void inte_control(void);

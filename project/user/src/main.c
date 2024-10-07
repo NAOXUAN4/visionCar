@@ -45,10 +45,18 @@ void Init(void)
     inte_control_init();
     UI_Init();
     KEY_Init();
+
+    wheel_init();
+    steer_init();
+    encoder_init();
+    beep_init();
+
+    PIDL_init();
+    PIDR_init();
+    steertimer_init();
 }
 
-int n;
-int main (void)
+int main(void)
 {
     clock_init(SYSTEM_CLOCK_120M);      // 初始化芯片时钟 工作频率为 120MHz
     debug_init();                       // 务必保留，本函数用于初始化MPU 时钟 调试串口
@@ -62,11 +70,6 @@ int main (void)
     {
 
         key_control();
-
-//        tft180_show_int(60, 100, n++,10);
-//        system_delay_us(10000);
-
-
         if(mt9v03x_finish_flag)
         {
 //            key_control();
@@ -78,17 +81,24 @@ int main (void)
               uint8 CmpressedImg[IMG_ROW][IMG_COL];
             */
             inte_control();
-
-
-
-
             mt9v03x_finish_flag= 0;
        }
-
-//        tft180_displayimage03x(mt9v03x_image[0], 60, 60);//原始图像
-//        tft180_show_gray_image(50,60,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
-
-        // 此处编写需要循环执行的代码
+//        steer_MoveAngle(20);
+//        system_delay_ms(100);
+//        steer_MoveAngle(-20);
+//        system_delay_ms(100);
+//            steer_MoveAngle(-20);
+//            //system_delay_ms(100);
+//            steer_MoveAngle(20);
     }
 }
+
+//void TIM4_IRQHandler(void)
+//{
+//    if(TIM_GetITStatus(TIM4, TIM_IT_Update) != RESET)
+//    {
+//       steer_MoveAngle(turn_out(0.4, 7));
+//       TIM_ClearITPendingBit(TIM4, TIM_IT_Update );
+//    }
+//}
 
