@@ -36,6 +36,7 @@ extern uint16 output_image[image_h][image_w];  //输出彩色图像
 extern void eight_all_in_one(uint8 (*)[image_w]); //直接在中断或循环里调用此程序就可以循环执行了
 
 
+
 #define ROAD_STRAIGHT 1
 #define ROAD_CURVE_L 2
 #define ROAD_CURVE_R 3
