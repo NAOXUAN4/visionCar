@@ -11,7 +11,7 @@ float error_last;
 float turn_out(float p_basic,float d)
 {
     float error,turn_out_res,turn_Pout,turn_Dout,p;
-    error = 30-angle_Err;
+    error = -angle_Err;
     //直道拐弯需要更大的p,k在h文件里改
     p = p_basic+error*error*k_pd;
     p = _limit((0),(p), (PMAX));

@@ -12,8 +12,8 @@
 #define WHEEL_FRE 25000
 
 //设置轮子 切换编号可以交换左右轮
-#define WHEEL_LEFT 0    //左轮编号
-#define WHEEL_RIGH 1    //右轮编号
+#define WHEEL_LEFT 1    //左轮编号
+#define WHEEL_RIGH 0    //右轮编号
 
 //PWM比较值最大值
 #define WHEEL_MAX 9999

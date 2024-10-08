@@ -4,9 +4,9 @@
 void encoder_init(void)
 {
     //C7，c6作为脉冲信号脚
-    encoder_quad_init(TIM9_ENCOEDER, TIM9_ENCOEDER_MAP3_CH1_D9 ,TIM9_ENCOEDER_MAP3_CH2_D11);
+    encoder_dir_init(TIM9_ENCOEDER, TIM9_ENCOEDER_MAP3_CH1_D9 ,TIM9_ENCOEDER_MAP3_CH2_D11);
     //e11，e9作为脉冲信号脚
-    encoder_quad_init(TIM1_ENCOEDER,  TIM1_ENCOEDER_MAP3_CH1_E9,TIM1_ENCOEDER_MAP3_CH2_E11);
+    encoder_dir_init(TIM1_ENCOEDER,  TIM1_ENCOEDER_MAP3_CH1_E9,TIM1_ENCOEDER_MAP3_CH2_E11);
 }
 
 //获取一路的数值
@@ -27,3 +27,15 @@ int encoder_get(uint8 ch)
     return cnt;
 }
 
+float encoder_turn(uint8 ch)
+{
+    float speed;
+    if(ch)
+    {
+        speed = 0.2*encoder_get(ch)*200;
+    }
+    else {
+        speed = 0.2*encoder_get(0)*200;
+    }
+    return speed;
+}

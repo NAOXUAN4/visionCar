@@ -1,14 +1,14 @@
 code/function/angleErr.o: \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/visionCar_main/project/code/function/angleErr.c \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/visionCar_main/project/code/function/angleErr.h \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/visionCar_main/project/code/function/eight.h \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/visionCar_main/project/code/function/lib/Slope_Calculate.h \
- e:\projectlibrary\cybercar\seekfree_ch32v307vct6_opensource_library(智能车摄像头)\visioncar_main\project\code\function\angleerr.h
+ C:/Users/Zh319/Desktop/新建文件夹/修改版（编码器能用）/visionCar_main/2024_10_08_project/project/code/function/angleErr.c \
+ C:/Users/Zh319/Desktop/新建文件夹/修改版（编码器能用）/visionCar_main/2024_10_08_project/project/code/function/angleErr.h \
+ C:/Users/Zh319/Desktop/新建文件夹/修改版（编码器能用）/visionCar_main/2024_10_08_project/project/code/function/eight.h \
+ C:/Users/Zh319/Desktop/新建文件夹/修改版（编码器能用）/visionCar_main/2024_10_08_project/project/code/function/lib/Slope_Calculate.h \
+ c:\users\zh319\desktop\新建文件夹\修改版（编码器能用）\visioncar_main\2024_10_08_project\project\code\function\angleerr.h
 
-E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/visionCar_main/project/code/function/angleErr.h:
+C:/Users/Zh319/Desktop/新建文件夹/修改版（编码器能用）/visionCar_main/2024_10_08_project/project/code/function/angleErr.h:
 
-E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/visionCar_main/project/code/function/eight.h:
+C:/Users/Zh319/Desktop/新建文件夹/修改版（编码器能用）/visionCar_main/2024_10_08_project/project/code/function/eight.h:
 
-E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/visionCar_main/project/code/function/lib/Slope_Calculate.h:
+C:/Users/Zh319/Desktop/新建文件夹/修改版（编码器能用）/visionCar_main/2024_10_08_project/project/code/function/lib/Slope_Calculate.h:
 
-e:\projectlibrary\cybercar\seekfree_ch32v307vct6_opensource_library(智能车摄像头)\visioncar_main\project\code\function\angleerr.h:
+c:\users\zh319\desktop\新建文件夹\修改版（编码器能用）\visioncar_main\2024_10_08_project\project\code\function\angleerr.h:

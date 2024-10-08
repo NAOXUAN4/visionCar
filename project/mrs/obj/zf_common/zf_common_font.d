@@ -1,8 +1,8 @@
 zf_common/zf_common_font.o: \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/visionCar_main/libraries/zf_common/zf_common_font.c \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/visionCar_main/libraries/zf_common/zf_common_font.h \
- E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/visionCar_main/libraries/zf_common/zf_common_typedef.h
+ C:/Users/Zh319/Desktop/新建文件夹/修改版（编码器能用）/visionCar_main/2024_10_08_project/libraries/zf_common/zf_common_font.c \
+ C:/Users/Zh319/Desktop/新建文件夹/修改版（编码器能用）/visionCar_main/2024_10_08_project/libraries/zf_common/zf_common_font.h \
+ C:/Users/Zh319/Desktop/新建文件夹/修改版（编码器能用）/visionCar_main/2024_10_08_project/libraries/zf_common/zf_common_typedef.h
 
-E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/visionCar_main/libraries/zf_common/zf_common_font.h:
+C:/Users/Zh319/Desktop/新建文件夹/修改版（编码器能用）/visionCar_main/2024_10_08_project/libraries/zf_common/zf_common_font.h:
 
-E:/proJectLibrary/cybercar/Seekfree_CH32V307VCT6_Opensource_Library(智能车摄像头)/visionCar_main/libraries/zf_common/zf_common_typedef.h:
+C:/Users/Zh319/Desktop/新建文件夹/修改版（编码器能用）/visionCar_main/2024_10_08_project/libraries/zf_common/zf_common_typedef.h:

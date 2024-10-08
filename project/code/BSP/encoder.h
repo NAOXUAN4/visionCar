@@ -7,13 +7,14 @@
 #define ENCODER_RIGH 1
 //设置正方向
 #define ENCODER_LEFT_FRONT (-1)
-#define ENCODER_RIGH_FRONT (1)
+#define ENCODER_RIGH_FRONT (-1)
 
 //初始化
 void encoder_init(void);
 //获取一路数值
 int encoder_get(uint8 ch);
-
+//速度m/s
+float encoder_turn(uint8 ch);
 #define actual_speed 0.05 //米每轮
 
 #endif

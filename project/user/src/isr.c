@@ -300,21 +300,12 @@ void TIM2_IRQHandler(void)
 
     }
 }
-int a = 20;
+//float a = 20.5;
 void TIM3_IRQHandler(void)
 {
     if(TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)
     {
-        if(state_now == 2){
-            int _angle = move_angle;
-            TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
-            steer_MoveAngle(a*=-1);
-            //steer_MoveAngle(_angle);
-        }
-        else {
-            TIM_ClearITPendingBit(TIM3, TIM_IT_Update);
-        }
-
+        TIM_ClearITPendingBit(TIM3, TIM_IT_Update );
 
 
     }
@@ -324,8 +315,6 @@ void TIM4_IRQHandler(void)
 {
     if(TIM_GetITStatus(TIM4, TIM_IT_Update) != RESET)
     {
-
-
         TIM_ClearITPendingBit(TIM4, TIM_IT_Update );
 
 
