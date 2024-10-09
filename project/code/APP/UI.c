@@ -134,7 +134,6 @@ void UI_INFO()
     tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
     tft180_show_rgb565_image(65, 0, output_image, 60, 60, 60, 60, 1);
     tft180_show_float(65, 65, angle_Err, 3, 4);
-    tft180_show_float(65, 85, move_angle, 2, 3);
     tft180_show_int(65,105,road_state,1);
 }
 void UI_CameraONLY()

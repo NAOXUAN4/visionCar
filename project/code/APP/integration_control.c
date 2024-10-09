@@ -58,19 +58,12 @@ void ctrl_QUICKRUN()
 
 void ctrl_INFO()
 {
-    float pwm;
     eight_all_in_one(BinaryImg_CDM);
-    pwm=pwm_out(20,0);
-    if(pwm>0)
-    {wheel_ctrl(WHEEL_RIGH,2000);
-    wheel_ctrl(WHEEL_LEFT,pwm+2000);}
-    else {
-        wheel_ctrl(WHEEL_LEFT, 2000);
-        wheel_ctrl(WHEEL_RIGH, 2000-pwm);
-    }
-//    wheel_ctrl(WHEEL_LEFT, 1000);
-//    wheel_ctrl(WHEEL_RIGH, 1000);
-    move_angle = turn_out(0.5,0);
+    wheel_ctrl(WHEEL_RIGH,1000);
+    wheel_ctrl(WHEEL_LEFT,1000);
+//    wheel_ctrl(WHEEL_LEFT, 1200);
+//    wheel_ctrl(WHEEL_RIGH, 1200);
+    move_angle = turn_out(0.5,0.25);
     if(move_angle > 20){move_angle = 20;}
     if(move_angle < -20){move_angle = -20;}
     steer_MoveAngle(move_angle);

@@ -3327,7 +3327,7 @@ Discarded input sections
  .text.calculate_s_i
                 0x0000000000000000      0x118 ./code/function/eight..o
  .text.cross_fill
-                0x0000000000000000      0x444 ./code/function/eight..o
+                0x0000000000000000      0x3a6 ./code/function/eight..o
  .text.is_cross_line
                 0x0000000000000000       0xae ./code/function/eight..o
  .sbss.resultlast.8326
@@ -5644,7 +5644,6 @@ OUTPUT(vision_car_v1.0.elf elf32-littleriscv)
  .debug_ranges  0x0000000000001000       0x20 ./code/APP/key.o
  .debug_ranges  0x0000000000001020       0x80 ./code/cam_preprocess.o
 
-<<<<<<< Updated upstream
 .debug_line     0x0000000000000000    0x1c9a9
  .debug_line    0x0000000000000000      0x495 ./zf_driver/zf_driver_delay.o
  .debug_line    0x0000000000000495      0x519 ./zf_driver/zf_driver_dvp.o
@@ -5682,45 +5681,6 @@ OUTPUT(vision_car_v1.0.elf elf32-littleriscv)
  .debug_line    0x00000000000198a2      0x871 ./code/APP/integration_control.o
  .debug_line    0x000000000001a113      0xb16 ./code/APP/key.o
  .debug_line    0x000000000001ac29     0x1d80 ./code/cam_preprocess.o
-=======
-.debug_line     0x0000000000000000    0x1aa02
- .debug_line    0x0000000000000000      0x3c9 ./zf_driver/zf_driver_delay.o
- .debug_line    0x00000000000003c9      0x409 ./zf_driver/zf_driver_dvp.o
- .debug_line    0x00000000000007d2      0x5ef ./zf_driver/zf_driver_gpio.o
- .debug_line    0x0000000000000dc1     0x1208 ./zf_driver/zf_driver_soft_iic.o
- .debug_line    0x0000000000001fc9     0x18c9 ./zf_driver/zf_driver_spi.o
- .debug_line    0x0000000000003892      0x9c0 ./zf_driver/zf_driver_timer.o
- .debug_line    0x0000000000004252      0x984 ./zf_driver/zf_driver_uart.o
- .debug_line    0x0000000000004bd6      0x483 ./zf_device/zf_device_camera.o
- .debug_line    0x0000000000005059      0x63e ./zf_device/zf_device_dm1xa.o
- .debug_line    0x0000000000005697     0x1120 ./zf_device/zf_device_gps_tau1201.o
- .debug_line    0x00000000000067b7      0xba8 ./zf_device/zf_device_mt9v03x_dvp.o
- .debug_line    0x000000000000735f     0x17c3 ./zf_device/zf_device_tft180.o
- .debug_line    0x0000000000008b22      0x2db ./zf_device/zf_device_type.o
- .debug_line    0x0000000000008dfd      0x4ff ./zf_common/zf_common_clock.o
- .debug_line    0x00000000000092fc      0xcdd ./zf_common/zf_common_debug.o
- .debug_line    0x0000000000009fd9      0xeea ./zf_common/zf_common_fifo.o
- .debug_line    0x000000000000aec3      0x1b9 ./zf_common/zf_common_font.o
- .debug_line    0x000000000000b07c     0x14f6 ./zf_common/zf_common_function.o
- .debug_line    0x000000000000c572      0x4b5 ./zf_common/zf_common_interrupt.o
- .debug_line    0x000000000000ca27      0xbca ./user_c/isr.o
- .debug_line    0x000000000000d5f1      0x69c ./user_c/main.o
- .debug_line    0x000000000000dc8d      0x378 ./sdk/Startup/startup_ch32v30x_D8C.o
- .debug_line    0x000000000000e005      0x4f6 ./sdk/Peripheral/ch32v30x_exti.o
- .debug_line    0x000000000000e4fb      0xa17 ./sdk/Peripheral/ch32v30x_gpio.o
- .debug_line    0x000000000000ef12     0x1226 ./sdk/Peripheral/ch32v30x_rcc.o
- .debug_line    0x0000000000010138      0xa0d ./sdk/Peripheral/ch32v30x_spi.o
- .debug_line    0x0000000000010b45     0x21c2 ./sdk/Peripheral/ch32v30x_tim.o
- .debug_line    0x0000000000012d07      0xc4b ./sdk/Peripheral/ch32v30x_usart.o
- .debug_line    0x0000000000013952     0x137d ./sdk/Peripheral/ch32v30x_usbotg_device.o
- .debug_line    0x0000000000014ccf      0x358 ./code/function/lib/kernel_smooth.o
- .debug_line    0x0000000000015027      0x43e ./code/function/angleErr.o
- .debug_line    0x0000000000015465     0x21a0 ./code/function/eight..o
- .debug_line    0x0000000000017605      0x88a ./code/APP/UI.o
- .debug_line    0x0000000000017e8f      0x695 ./code/APP/integration_control.o
- .debug_line    0x0000000000018524      0x93a ./code/APP/key.o
- .debug_line    0x0000000000018e5e     0x1ba4 ./code/cam_preprocess.o
->>>>>>> Stashed changes
 
 .debug_str      0x0000000000000000     0x7c20
  .debug_str     0x0000000000000000      0x606 ./zf_driver/zf_driver_delay.o

@@ -19,6 +19,6 @@ float turn_out(float p_basic,float d)
     turn_Dout = d*(error-error_last);
     error_last = error;
     turn_out_res = turn_Dout+turn_Pout;
-    //tft180_show_float(65,85, turn_out, 2, 3);
+    tft180_show_float(65,85, turn_out_res, 2, 3);
     return turn_out_res;
 }

@@ -54,7 +54,7 @@ void Init(void)
     PIDL_init();
     PIDR_init();
     //steertimer_init();
-    mt9v03x_set_exposure_time(3000);
+//    mt9v03x_set_exposure_time(3000);
 }
 
 int main(void)

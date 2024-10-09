@@ -1,5 +1,5 @@
 code/function/binData.o: \
- E:/proJectLibrary/cybercar/2024_10_08_project/project/code/function/binData.c \
- E:/proJectLibrary/cybercar/2024_10_08_project/project/code/function/binData.h
+ G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/binData.c \
+ G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/binData.h
 
-E:/proJectLibrary/cybercar/2024_10_08_project/project/code/function/binData.h:
+G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/binData.h:
