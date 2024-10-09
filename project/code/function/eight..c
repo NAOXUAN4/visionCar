@@ -11,6 +11,7 @@
 
 
 uint8 road_state = 0;
+uint8 start_Line_total = image_h - 5;
 
 
 void test(uint8 [image_h][image_w]);
@@ -387,7 +388,7 @@ uint8 detectStartPoint(int start_Line){   //从最后一行，左向右打，遇
 日期：24/9/4
 注释：
 */
-bool isIN_map(int x,int y){return (y<=image_h - 1)&&(x<=image_w - 1);} //点的边界内合法性检验
+bool isIN_map(int x,int y){return (y<=start_Line_total)&&(x<=image_w - 1);} //点的边界内合法性检验
 
 uint8 bound_Points_L[2][100];
 uint8 bound_Points_R[2][100];
@@ -871,6 +872,8 @@ example： get_left(data_stastics_l );
  */
 uint8 l_border[image_h];//左线数组
 uint8 r_border[image_h];//右线数组
+uint8 l_highest = 0; //左最高
+uint8 r_highest = 0; //右最高
 
 void get_left(uint16 total_L,uint8 start_Line)
 {
@@ -891,10 +894,12 @@ void get_left(uint16 total_L,uint8 start_Line)
 		if (points_l[j][1] == h)
 		{
 			l_border[h] = points_l[j][0]+1;
+			l_highest++;
 			//printf("l_border[%d]:%d\n", h, l_border[h]);
 		}
 		else continue; //每行只取一个点，没到下一行就不记录
 		h--;
+
 		if (h == 0) 
 		{
 			break;//到最后一行退出
@@ -927,10 +932,12 @@ void get_right(uint16 total_R, uint8 start_Line)
 		if (points_r[j][1] == h)
 		{
 			r_border[h] = points_r[j][0] - 1;
+			r_highest++;
 			//printf("r_border[%d]:%d\n", h, r_border[h]);
 		}
 		else continue;//每行只取一个点，没到下一行就不记录
 		h--;
+
 		if (h == 0)break;//到最后一行退出
 	}
 }
@@ -1312,35 +1319,59 @@ void exclude_remote_miss(uint8 *l_border, uint8 *r_border)
 作者：Yian
 日期：2024年9月6日
 ------------------------------------------------------*/
+uint8 road_w = 255;
+uint8 mid_point_last = 255;
 uint8 center_line[image_h];//中线数组
+
 void get_mid(uint8 *l_border, uint8 *r_border,uint8 *center_line,uint8 hightest)
 {
-    for (uint8 i = hightest; i < image_h - 2; i++)
+    for(int i = 0;i<image_h;i++){center_line[i]=255;} //初始化
+
+    uint8 mid_point = road_w/2;
+
+    if(r_border[start_Line_total - 1]==255 && l_border[start_Line_total - 1]==255){mid_point_last = road_w/2;}
+    else if (r_border[start_Line_total - 1]==255) {
+        mid_point = l_border[start_Line_total - 1] + road_w/2;
+    }
+    else{
+        mid_point = r_border[start_Line_total - 1] - road_w/2;
+    }
+
+    center_line[start_Line_total] = mid_point;
+    tft180_show_int(65, 65, road_w, 3);
+    tft180_show_int(105, 95, r_border[start_Line_total - 1], 3);
+    tft180_show_int(65, 95, l_border[start_Line_total - 1], 3);
+
+    tft180_show_int(65, 80, mid_point, 3);
+    for (uint8 i = start_Line_total - 1; i > start_Line_total - (r_highest>l_highest?r_highest:l_highest); i--)
     {
-        if(  ((l_border[i] != 255) && (r_border[i] != 255)) ){
+
+        if(  ((l_border[i] != 255) && (r_border[i] != 255))){
             //printf("st 1\n");
             center_line[i] = (l_border[i]+r_border[i])/2; // 如果两端都有二分法
 
         }
-        else if (r_border[i] == 255 && i!=hightest)  //右端消失
+        else if (r_border[i] == 255)  //右端消失
         {
 
-            center_line[i] = center_line[i-1]+(l_border[i]-l_border[i-1]);
+            center_line[i] = center_line[i+1]+(l_border[i]-l_border[i+1]);
         }
-        else if (l_border[i] == 255 && i!=hightest) //左端消失
+        else if (l_border[i] == 255) //左端消失
         {
 
-            center_line[i] = center_line[i-1]+(r_border[i]-r_border[i-1]);  //平移
+            center_line[i] = center_line[i+1]+(r_border[i]-r_border[i+1]);  //平移
         }
         else
         {
-            if(l_border[i]==255 && r_border[i]==255){center_line[i] = 255;}
-            else{center_line[i]= l_border[i]>r_border[i]?r_border[i]:l_border[i];}
+            if(l_border[i]==255 && r_border[i]==255){center_line[i] = center_line[i+1] + mid_point-mid_point_last;} //如果两边都消失，就用上一次的中线判断
 
         }
 
         
     }
+
+
+    mid_point_last = mid_point;
 
 }
 
@@ -1385,7 +1416,7 @@ void image_process(void)
 	// //清零
 	data_stastics_l = 0;
 	data_stastics_r = 0;
-	if (detectStartPoint(image_h - 2))//找到起点了，再执行八领域，没找到就一直找   //get_start_point(image_h - 2)
+	if (detectStartPoint(start_Line_total))//找到起点了，再执行八领域，没找到就一直找   //get_start_point(image_h - 2)
 	{
 		eIGHT_neighbor((uint16)USE_num, bin_image, &data_stastics_l, &data_stastics_r, start_point_l[0], start_point_l[1], start_point_r[0], start_point_r[1], &hightest);
 		
@@ -1393,8 +1424,10 @@ void image_process(void)
 		kernel_smooth(dir_r, dir_r, 2, data_stastics_r);
 
 		// 从爬取的边界线内提取边线 ， 这个才是最终有用的边线
-		get_left(data_stastics_l,image_h - 2);
-		get_right(data_stastics_r, image_h - 2);
+		get_left(data_stastics_l,start_Line_total);
+		get_right(data_stastics_r, start_Line_total);
+		if(road_w == 255){road_w = (r_border[start_Line_total] + l_border[start_Line_total]);}
+
 		
 		//处理函数放这里，不要放到if外面去了，不要放到if外面去了，不要放到if外面去了，重要的事说三遍
 
@@ -1433,7 +1466,7 @@ void draw_output_image()
 
 
 	
-	for (int i = image_h-1; i > hightest; i--)
+	for (int i = start_Line_total; i > hightest; i--)
 	{
 		//左边界
 		if(l_border[i]<image_w){
@@ -1471,8 +1504,8 @@ void deter_roadState()
 		if(!isCORSS && !road_state)
 		{
 
-		int close = hightest + (image_h - hightest) /4*3;
-		int far = hightest + (image_h - hightest) /4;
+		int close = hightest + (start_Line_total - hightest) /4*3;
+		int far = hightest + (start_Line_total - hightest) /4;
 		if(l_border[close] < image_w / 2 && l_border[far] >= image_w / 2
 			&& r_border[close] > image_w / 2 && r_border[far] >= image_w / 2)
 			{
@@ -1502,6 +1535,8 @@ void eight_init()
 	road_state = 0;
 	isCORSS = false;
 	angleVaild = 0;
+	l_highest = 0; //左最高
+	r_highest = 0; //右最高
 
     memset(bin_image,0,sizeof(bin_image));   //初始图像数组
 
@@ -1538,7 +1573,7 @@ void eight_all_in_one(uint8 (*input_image)[image_w]){
     image_cpy(input_image);
     image_process();
 
-    angleVaild = angleErr_cal(WEIGHT_CURVE, center_line, image_h-2, hightest);
+    angleVaild = angleErr_cal(WEIGHT_CURVE, center_line, start_Line_total, hightest);
 //    angleErr_slope(center_line, image_h-2, hightest);
 
     draw_output_image();

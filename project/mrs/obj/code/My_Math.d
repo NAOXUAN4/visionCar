@@ -1,5 +1,5 @@
 code/My_Math.o: \
- C:/Users/Zh319/Desktop/新建文件夹/修改版（编码器能用）/visionCar_main/2024_10_08_project/project/code/My_Math.c \
- C:/Users/Zh319/Desktop/新建文件夹/修改版（编码器能用）/visionCar_main/2024_10_08_project/project/code/My_Math.h
+ E:/proJectLibrary/cybercar/2024_10_08_project/project/code/My_Math.c \
+ E:/proJectLibrary/cybercar/2024_10_08_project/project/code/My_Math.h
 
-C:/Users/Zh319/Desktop/新建文件夹/修改版（编码器能用）/visionCar_main/2024_10_08_project/project/code/My_Math.h:
+E:/proJectLibrary/cybercar/2024_10_08_project/project/code/My_Math.h:

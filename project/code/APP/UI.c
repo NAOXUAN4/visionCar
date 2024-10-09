@@ -144,7 +144,7 @@ void UI_CameraONLY()
     tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
     tft180_show_rgb565_image(65, 0, (const uint16_t*)output_image, 60, 60, 60, 60, 1);
 
-    tft180_show_float(65, 65, angle_Err, 3, 4);
+//    tft180_show_float(65, 65, angle_Err, 3, 4);
 
 
     //µÀÂ·×´Ì¬ÏÔÊ¾
