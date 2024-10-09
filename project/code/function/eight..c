@@ -1152,6 +1152,12 @@ void cross_fill(uint8(*image)[image_w], uint8 *l_border, uint8 *r_border, uint16
 	uint8 start, end;
 	float slope_l_rate = 0, intercept_l = 0;
 	float slope_r_rate = 0;
+
+//	tft180_show_uint(75, 65, dir_l[i-1], 2);
+//	tft180_show_uint(80, 65, dir_l[i], 2);
+//	tft180_show_uint(85, 65, dir_l[i+3], 2);
+//	tft180_show_uint(90, 65, dir_l[i+5], 2);
+
 	//出十字
 	for (i = 1; i < total_num_l; i++)
 	{
@@ -1232,7 +1238,7 @@ void cross_fill(uint8(*image)[image_w], uint8 *l_border, uint8 *r_border, uint16
 返回值：true/false
 作者：yian
 日期：2024年9月6日
-注释：  搜集左侧消失线，右侧消失线，如果两边有一定数量同高的消失线，输出true 作为十字补线判定的第二条件
+注释：  搜集左侧消失线，右侧消失线，如果两边有一定数量同高的消失线，输出true 作为十字补线判定的第二条件,并且消失线
 ------------------------------------------------------*/
 bool is_cross_line(uint16 (*point_border_L)[2],uint16 (*point_border_R)[2], uint16 n_L, uint16 n_R)
 {
@@ -1325,6 +1331,7 @@ uint8 center_line[image_h];//中线数组
 
 void get_mid(uint8 *l_border, uint8 *r_border,uint8 *center_line,uint8 hightest)
 {
+<<<<<<< Updated upstream
     for(int i = 0;i<image_h;i++){center_line[i]=255;} //初始化
 
     uint8 mid_point = road_w/2;
@@ -1344,6 +1351,9 @@ void get_mid(uint8 *l_border, uint8 *r_border,uint8 *center_line,uint8 hightest)
 
     tft180_show_int(65, 80, mid_point, 3);
     for (uint8 i = start_Line_total - 1; i > start_Line_total - (r_highest>l_highest?r_highest:l_highest); i--)
+=======
+    for (uint8 i = hightest; i < start_Line_total; i++)
+>>>>>>> Stashed changes
     {
 
         if(  ((l_border[i] != 255) && (r_border[i] != 255))){
@@ -1420,8 +1430,23 @@ void image_process(void)
 	{
 		eIGHT_neighbor((uint16)USE_num, bin_image, &data_stastics_l, &data_stastics_r, start_point_l[0], start_point_l[1], start_point_r[0], start_point_r[1], &hightest);
 		
+<<<<<<< Updated upstream
 		kernel_smooth(dir_l, dir_l ,2, data_stastics_l);  
 		kernel_smooth(dir_r, dir_r, 2, data_stastics_r);
+=======
+		kernel_smooth(dir_l, dir_l ,4, data_stastics_l);
+		kernel_smooth(dir_r, dir_r, 4, data_stastics_r);
+//		printf("平滑完成\n");
+//		for (int i = 0; i < data_stastics_l; i++)
+//		{
+//			printf("%d ", dir_l[i]);
+//		}printf("\n");
+//		for (int i = 0; i < data_stastics_r; i++)
+//		{
+//			printf("%d ", dir_r[i]);
+//		}printf("\n");
+//
+>>>>>>> Stashed changes
 
 		// 从爬取的边界线内提取边线 ， 这个才是最终有用的边线
 		get_left(data_stastics_l,start_Line_total);
@@ -1485,6 +1510,17 @@ void draw_output_image()
 		
 		
 	}
+<<<<<<< Updated upstream
+=======
+	
+	for (int i = start_Line_total; i > hightest; i--)
+	{
+		//中线
+		output_image[i][center_line[i]] = RGB565_BLUE;
+	        
+	}
+	
+>>>>>>> Stashed changes
 }
 
 /**
@@ -1501,9 +1537,12 @@ void deter_roadState()
 //	if(data_stastics_l > 3 || data_stastics_r > 3)
     if(angleVaild)
 	{
+<<<<<<< Updated upstream
 		if(!isCORSS && !road_state)
 		{
 
+=======
+>>>>>>> Stashed changes
 		int close = hightest + (start_Line_total - hightest) /4*3;
 		int far = hightest + (start_Line_total - hightest) /4;
 		if(l_border[close] < image_w / 2 && l_border[far] >= image_w / 2
