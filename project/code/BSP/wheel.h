@@ -16,7 +16,7 @@
 #define WHEEL_RIGH 0    //右轮编号
 
 //PWM比较值最大值
-#define WHEEL_MAX 9999
+#define WHEEL_MAX 9000
 
 
 
@@ -27,7 +27,7 @@ void wheel_init(void);
 void wheel_ctrl(uint8 wheel_num,int speed);
 
 
-
+int _limit_int(int min,int target,int max);
 
 
 

@@ -2,6 +2,15 @@
 #include "My_Math.h"
 //#define _limit(a, b, c) ((a) > (b) ? ((a) < (c) ? (a) : (c)) : (b))
 
+int _limit_int(int min,int target,int max)
+{
+
+    if(target < min) return min;
+    if(target > max) return max;
+    return target;
+
+}
+
  //ÂÖ³õÊ¼»¯
 void wheel_init(void)
 {
@@ -19,6 +28,7 @@ static void wheel_pwm_out(uint8 wheel_num,int speed)
 
 {
     speed =_limit((0),(speed), (PWM_DUTY_MAX));
+    //speed = _limit_int(0, speed, WHEEL_MAX);
 
     if(wheel_num)
     {
