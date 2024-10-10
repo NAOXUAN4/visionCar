@@ -1,14 +1,13 @@
-code/APP/key.o: \
- G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/APP/key.c \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_delay.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_clock.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Core/core_riscv.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_typedef.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_typedef.h \
+code/function/eight.o: \
+ G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/eight.c \
+ G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/eight.h \
+ G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/binData.h \
+ G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/lib/kernel_smooth.h \
+ G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/angleErr.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_headfile.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_adc.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Core/core_riscv.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_bkp.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_can.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_crc.h \
@@ -30,6 +29,8 @@ code/APP/key.o: \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_usart.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_wwdg.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_clock.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_typedef.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_debug.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_font.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_function.h \
@@ -37,6 +38,9 @@ code/APP/key.o: \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_fifo.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_adc.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_gpio.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_typedef.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_delay.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_clock.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_dvp.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_interrupt.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_encoder.h \
@@ -79,43 +83,23 @@ code/APP/key.o: \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_device/zf_device_dm1xa.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_device/zf_device_wifi_spi.h \
  G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_device/zf_device_detector.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_device/zf_device_dl1b.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/Ourcode_headfile.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/cam_preprocess.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/Ourcode_headfile.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/My_Math.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/APP/UI.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/APP/key.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/APP/integration_control.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/function/eight.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/function/angleErr.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/function/eight.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/BSP/wheel.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/BSP/encoder.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/BSP/steer.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/BSP/beep.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/CPP/turn_pd.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/CPP/volicity_pid.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/CPP/timer.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/CPP/pid.h
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_device/zf_device_dl1b.h
 
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_delay.h:
+G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/eight.h:
 
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_clock.h:
+G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/binData.h:
 
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x.h:
+G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/lib/kernel_smooth.h:
 
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Core/core_riscv.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_typedef.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_typedef.h:
+G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/angleErr.h:
 
 G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_headfile.h:
 
 G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_adc.h:
 
 G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x.h:
+
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Core/core_riscv.h:
 
 G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_bkp.h:
 
@@ -159,6 +143,10 @@ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Periph
 
 G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_clock.h:
 
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x.h:
+
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_typedef.h:
+
 G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_debug.h:
 
 G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_font.h:
@@ -172,6 +160,12 @@ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/
 G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_adc.h:
 
 G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_gpio.h:
+
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_typedef.h:
+
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_delay.h:
+
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_clock.h:
 
 G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_dvp.h:
 
@@ -258,39 +252,3 @@ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_device/
 G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_device/zf_device_detector.h:
 
 G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_device/zf_device_dl1b.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/Ourcode_headfile.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/cam_preprocess.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/Ourcode_headfile.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/My_Math.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/APP/UI.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/APP/key.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/APP/integration_control.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/function/eight.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/function/angleErr.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/function/eight.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/BSP/wheel.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/BSP/encoder.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/BSP/steer.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/BSP/beep.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/CPP/turn_pd.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/CPP/volicity_pid.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/CPP/timer.h:
-
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\project\code/CPP/pid.h:

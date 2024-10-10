@@ -1,68 +1,68 @@
 zf_device/zf_device_scc8660_dvp.o: \
- E:/proJectLibrary/cybercar/visionCar_main/libraries/zf_device/zf_device_scc8660_dvp.c \
- E:/proJectLibrary/cybercar/visionCar_main/libraries/zf_device/zf_device_type.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_common/zf_common_typedef.h \
- E:/proJectLibrary/cybercar/visionCar_main/libraries/zf_device/zf_device_camera.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_common/zf_common_fifo.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_common/zf_common_typedef.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_driver/zf_driver_uart.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\sdk\Peripheral/ch32v30x.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\sdk\Core/core_riscv.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\sdk\Peripheral/ch32v30x_gpio.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\sdk\Peripheral/ch32v30x.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\sdk\Peripheral/ch32v30x_rcc.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\sdk\Peripheral/ch32v30x_usart.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_common/zf_common_interrupt.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_common/zf_common_debug.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_driver/zf_driver_gpio.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\sdk\Peripheral/ch32v30x_exti.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_driver/zf_driver_dvp.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_driver/zf_driver_delay.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_common/zf_common_clock.h \
- E:/proJectLibrary/cybercar/visionCar_main/libraries/zf_device/zf_device_scc8660_dvp.h \
- E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_driver/zf_driver_soft_iic.h \
- E:/proJectLibrary/cybercar/visionCar_main/libraries/zf_device/zf_device_config.h
+ G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/libraries/zf_device/zf_device_scc8660_dvp.c \
+ G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/libraries/zf_device/zf_device_type.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_typedef.h \
+ G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/libraries/zf_device/zf_device_camera.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_fifo.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_typedef.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_uart.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Core/core_riscv.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_gpio.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_rcc.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_usart.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_interrupt.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_debug.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_gpio.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_exti.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_dvp.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_delay.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_clock.h \
+ G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/libraries/zf_device/zf_device_scc8660_dvp.h \
+ G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_soft_iic.h \
+ G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/libraries/zf_device/zf_device_config.h
 
-E:/proJectLibrary/cybercar/visionCar_main/libraries/zf_device/zf_device_type.h:
+G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/libraries/zf_device/zf_device_type.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_common/zf_common_typedef.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_typedef.h:
 
-E:/proJectLibrary/cybercar/visionCar_main/libraries/zf_device/zf_device_camera.h:
+G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/libraries/zf_device/zf_device_camera.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_common/zf_common_fifo.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_fifo.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_common/zf_common_typedef.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_typedef.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_driver/zf_driver_uart.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_uart.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\sdk\Peripheral/ch32v30x.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\sdk\Core/core_riscv.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Core/core_riscv.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\sdk\Peripheral/ch32v30x_gpio.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_gpio.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\sdk\Peripheral/ch32v30x.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\sdk\Peripheral/ch32v30x_rcc.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_rcc.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\sdk\Peripheral/ch32v30x_usart.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_usart.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_common/zf_common_interrupt.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_interrupt.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_common/zf_common_debug.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_debug.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_driver/zf_driver_gpio.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_gpio.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\sdk\Peripheral/ch32v30x_exti.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Peripheral/ch32v30x_exti.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_driver/zf_driver_dvp.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_dvp.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_driver/zf_driver_delay.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_delay.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_common/zf_common_clock.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_common/zf_common_clock.h:
 
-E:/proJectLibrary/cybercar/visionCar_main/libraries/zf_device/zf_device_scc8660_dvp.h:
+G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/libraries/zf_device/zf_device_scc8660_dvp.h:
 
-E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_driver/zf_driver_soft_iic.h:
+G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_driver/zf_driver_soft_iic.h:
 
-E:/proJectLibrary/cybercar/visionCar_main/libraries/zf_device/zf_device_config.h:
+G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/libraries/zf_device/zf_device_config.h:

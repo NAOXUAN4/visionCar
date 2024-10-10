@@ -61,7 +61,7 @@ all: vision_car_main.elf secondary-outputs
 
 # 工具调用
 vision_car_main.elf: $(OBJS) $(USER_OBJS)
-	@	@	riscv-none-embed-gcc -march=rv32imafc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -pedantic -Wunused -Wuninitialized -Wall  -g -T "E:\proJectLibrary\cybercar\visionCar_main\libraries\sdk\Ld\Link.ld" -nostartfiles -Xlinker --gc-sections -L"../" -L"E:\proJectLibrary\cybercar\visionCar_main\libraries\zf_device" -Wl,-Map,"vision_car_main.map" --specs=nano.specs -u _printf_float --specs=nosys.specs -Wl,--print-memory-usage -o "vision_car_main.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	@	@	riscv-none-embed-gcc -march=rv32imafc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -pedantic -Wunused -Wuninitialized -Wall  -g -T "G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Ld\Link.ld" -nostartfiles -Xlinker --gc-sections -L"../" -L"G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_device" -Wl,-Map,"vision_car_main.map" --specs=nano.specs -u _printf_float --specs=nosys.specs -Wl,--print-memory-usage -o "vision_car_main.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@	@
 vision_car_main.hex: vision_car_main.elf
 	@	riscv-none-embed-objcopy -O ihex "vision_car_main.elf"  "vision_car_main.hex"

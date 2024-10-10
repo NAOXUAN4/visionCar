@@ -145,15 +145,14 @@ void UI_CameraONLY()
 
 //    tft180_show_float(65, 65, angle_Err, 3, 4);
 
-
+    tft180_show_uint(65, 70, isEnd, 2);
     //µÀÂ·×´Ì¬ÏÔÊ¾
+
     switch(road_state){
     case ROAD_CORSSROAD:tft180_show_string(140, 10, "+");break;
     case ROAD_CURVE_L: tft180_show_string(140, 10, ")");break;
     case ROAD_CURVE_R:tft180_show_string(140, 10, "(");break;
     case ROAD_STRAIGHT:tft180_show_string(140, 10, "|");break;
     default:tft180_show_string(140, 10, "X") ;break;
-
     }
-
 }
