@@ -119,9 +119,9 @@ void UI_Home() // HOME_STATE
 
 void UI_QucikRun()
 {
-    tft180_displayimage03x(mt9v03x_image[0], 60, 60);
-    tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
-    tft180_show_rgb565_image(65, 0, output_image, 60, 60, 60, 60, 1);
+    tft180_displayimage03x(mt9v03x_image[0], 60, 60);//原始图像
+    //tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
+    tft180_show_rgb565_image(0, 65, (const uint16_t*)output_image, 60, 60, 60, 60, 1);
     tft180_show_float(65, 65, angle_Err, 3, 4);
     tft180_show_float(65, 85, move_angle, 2, 3);
 
@@ -130,9 +130,9 @@ void UI_QucikRun()
 void UI_INFO()
 {
 
-    tft180_displayimage03x(mt9v03x_image[0], 60, 60);
-    tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
-    tft180_show_rgb565_image(65, 0, output_image, 60, 60, 60, 60, 1);
+    tft180_displayimage03x(mt9v03x_image[0], 60, 60);//原始图像
+    //tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
+    tft180_show_rgb565_image(0, 65, (const uint16_t*)output_image, 60, 60, 60, 60, 1);
     tft180_show_float(65, 65, angle_Err, 3, 4);
     tft180_show_int(65,105,road_state,1);
 }
@@ -140,19 +140,20 @@ void UI_CameraONLY()
 {
 
     tft180_displayimage03x(mt9v03x_image[0], 60, 60);//原始图像
-    tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
-    tft180_show_rgb565_image(65, 0, (const uint16_t*)output_image, 60, 60, 60, 60, 1);
+    //tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
+    tft180_show_rgb565_image(0, 65, (const uint16_t*)output_image, 60, 60, 60, 60, 1);
 
 //    tft180_show_float(65, 65, angle_Err, 3, 4);
 
-    tft180_show_uint(65, 70, isEnd, 2);
-    //道路状态显示
 
+    //道路状态显示
     switch(road_state){
     case ROAD_CORSSROAD:tft180_show_string(140, 10, "+");break;
     case ROAD_CURVE_L: tft180_show_string(140, 10, ")");break;
     case ROAD_CURVE_R:tft180_show_string(140, 10, "(");break;
     case ROAD_STRAIGHT:tft180_show_string(140, 10, "|");break;
     default:tft180_show_string(140, 10, "X") ;break;
+
     }
+
 }

@@ -1,14 +1,14 @@
 code/function/angleErr.o: \
- G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/angleErr.c \
- G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/angleErr.h \
- G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/eight.h \
- G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/lib/Slope_Calculate.h \
- g:\naoxuan\download\visioncar-eight_dev\visioncar-eight_dev\project\code\function\angleerr.h
+ E:/proJectLibrary/cybercar/visionCar-eight_Dev(2)/project/code/function/angleErr.c \
+ E:/proJectLibrary/cybercar/visionCar-eight_Dev(2)/project/code/function/angleErr.h \
+ E:/proJectLibrary/cybercar/visionCar-eight_Dev(2)/project/code/function/eight.h \
+ E:/proJectLibrary/cybercar/visionCar-eight_Dev(2)/project/code/function/lib/Slope_Calculate.h \
+ e:\projectlibrary\cybercar\visioncar-eight_dev(2)\project\code\function\angleerr.h
 
-G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/angleErr.h:
+E:/proJectLibrary/cybercar/visionCar-eight_Dev(2)/project/code/function/angleErr.h:
 
-G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/eight.h:
+E:/proJectLibrary/cybercar/visionCar-eight_Dev(2)/project/code/function/eight.h:
 
-G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/project/code/function/lib/Slope_Calculate.h:
+E:/proJectLibrary/cybercar/visionCar-eight_Dev(2)/project/code/function/lib/Slope_Calculate.h:
 
-g:\naoxuan\download\visioncar-eight_dev\visioncar-eight_dev\project\code\function\angleerr.h:
+e:\projectlibrary\cybercar\visioncar-eight_dev(2)\project\code\function\angleerr.h:

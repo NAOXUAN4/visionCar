@@ -1113,6 +1113,35 @@ void calculate_s_i(uint8 start, uint8 end, uint8 *border, float *slope_rate, flo
 }
 
 
+uint8 cross_state_array[8];    //1:true  0:false
+/**
+ * ----------------------------------------------------------
+ * @name cross_state_Denoising
+ * @brief 列表去除噪声
+ * @param [in] uint8 threshold		输入阈值
+ * @param [in] bool *isCORSS		输出是否为十字状态
+ * @author Yian
+ * @date 2024年10月11日
+ * @note 
+**/
+void cross_state_Denoising(uint8 threshold, bool *isCORSS_, bool isCORSS_Now)
+{
+	uint8 sum = 0;
+	for (uint8 i = 1; i < 7; i++)
+	{
+		cross_state_array[i] = cross_state_array[i + 1];
+		if(cross_state_array[i] == 1){sum++;}
+	}
+	cross_state_array[7] = (isCORSS_Now?1:0);
+	sum += cross_state_array[7];
+
+	if (sum >= threshold) {isCORSS_ = true; }
+	else {isCORSS_ = false;}
+	
+	
+	
+}
+
 /**------------------------------------------------------
 *函数名称：void cross_fill
 *函数功能：
@@ -1177,7 +1206,8 @@ void cross_fill(uint8(*image)[image_w], uint8 *l_border, uint8 *r_border, uint16
 	if (break_num_l && break_num_r 
 			&& is_cross_line(points_l,points_r,data_stastics_l,data_stastics_r))//进入十字补条件1：两边生长方向都符合条件，条件2：两边有n个等高的消失线          // && image[image_h - 1][4] && image[image_h - 1][image_w - 4]
 	{
-		isCORSS = true;   //十字标志位
+		//isCORSS = true;   //十字标志位
+		cross_state_Denoising(3, &isCORSS, true);
 
 //		//计算斜率
 //
@@ -1259,7 +1289,6 @@ bool is_cross_line(uint16 (*point_border_L)[2],uint16 (*point_border_R)[2], uint
 		{
 			break;
 		}
-		
 	}
 	//printf("\ncross_line_num:%d\n", counter);
 	if (counter >= 4)
@@ -1268,10 +1297,6 @@ bool is_cross_line(uint16 (*point_border_L)[2],uint16 (*point_border_R)[2], uint
 	}
 	return false;
 }
-
-
-
-
 
 
 /*------------------------------------------------------
@@ -1371,13 +1396,8 @@ void get_mid(uint8 *l_border, uint8 *r_border,uint8 *center_line,uint8 hightest)
         else
         {
             if(l_border[i]==255 && r_border[i]==255){center_line[i] = center_line[i+1] + mid_point-mid_point_last;} //如果两边都消失，就用上一次的中线判断
-
         }
-
-        
     }
-
-
     mid_point_last = mid_point;
 
 }
@@ -1448,8 +1468,8 @@ void detect_end(uint8 check_Line,uint8 block_w_MAX,uint8 block_w_MIN)
         }
     }
 
-	tft180_show_uint(65, 65, block_sum, 3);
-	tft180_show_uint(65, 95, pix_max, 3);
+//	tft180_show_uint(65, 65, block_sum, 3);
+//	tft180_show_uint(65, 95, pix_max, 3);
 	
 }
 
@@ -1479,9 +1499,8 @@ void image_process(void)
 	{
 		eIGHT_neighbor((uint16)USE_num, bin_image, &data_stastics_l, &data_stastics_r, start_point_l[0], start_point_l[1], start_point_r[0], start_point_r[1], &hightest);
 		
-		kernel_smooth(dir_l, dir_l ,2, data_stastics_l);  
-		kernel_smooth(dir_r, dir_r, 2, data_stastics_r);
-
+		kernel_smooth(dir_l, dir_l ,4, data_stastics_l);
+		kernel_smooth(dir_r, dir_r, 4, data_stastics_r);
 
 
 		// 从爬取的边界线内提取边线 ， 这个才是最终有用的边线
@@ -1489,16 +1508,15 @@ void image_process(void)
 		get_right(data_stastics_r, start_Line_total);
 
 
-
 		cross_fill(bin_image, l_border, r_border, data_stastics_l, data_stastics_r, dir_l, dir_r, points_l, points_r);
+		//      //十字补线
+
 		if(road_w == 255){road_w = (r_border[start_Line_total] + l_border[start_Line_total]);}
 
 		
 		//处理函数放这里，不要放到if外面去了，不要放到if外面去了，不要放到if外面去了，重要的事说三遍
 
 
-
-//		//十字补线
 
 		exclude_remote_miss(l_border, r_border);
 
@@ -1521,6 +1539,17 @@ void image_process(void)
 uint16 output_image[image_h][image_w];
 void draw_output_image()
 {
+    //二值化图
+    for (uint8 i = 0; i < image_h; i++) {
+        for (uint8 ii = 0; ii < image_w; ii++) {
+            if(bin_image[i][ii] == white_pixel)
+                output_image[i][ii] = RGB565_WHITE;
+            else {
+                output_image[i][ii] = RGB565_BLACK;
+            }
+        }
+    }
+
     //原边界
 	for (int i = 0; i < data_stastics_l; i++)
 	{
@@ -1554,9 +1583,9 @@ void draw_output_image()
 		
 	}
 
-	for(uint i = 0;i<image_w;i++)
+	for(uint8 i = 0;i<image_w;i++)
 	{
-	    output_image[start_Line_total - 10][i] = RGB565_WHITE;
+	    output_image[start_Line_total - 10][i] = RGB565_YELLOW;
 	}
 }
 
@@ -1572,34 +1601,39 @@ bool angleVaild = 0;
 void deter_roadState()
 {
 //	if(data_stastics_l > 3 || data_stastics_r > 3)
-    if(angleVaild)
-	{
-		if(!isCORSS && !road_state)
-		{
+    if(isEnd == 0){
+        if(angleVaild)
+        {
+            if(!isCORSS && !road_state)
+            {
 
-		int close = hightest + (start_Line_total - hightest) /4*3;
-		int far = hightest + (start_Line_total - hightest) /4;
-		if(l_border[close] < image_w / 2 && l_border[far] >= image_w / 2
-			&& r_border[close] > image_w / 2 && r_border[far] >= image_w / 2)
-			{
-				road_state = ROAD_CURVE_R;
-			}
-		else if (l_border[close] < image_w / 2 && l_border[far] <= image_w / 2
-			&& r_border[close] > image_w / 2 && r_border[far] <= image_w / 2)
-			{
-				road_state = ROAD_CURVE_L;
-			}
-		else
-			{
-				road_state = ROAD_STRAIGHT;
-			}
+            int close = hightest + (start_Line_total - hightest) /4*3;
+            int far = hightest + (start_Line_total - hightest) /4;
+            if(l_border[close] < image_w / 2 && l_border[far] >= image_w / 2
+                && r_border[close] > image_w / 2 && r_border[far] >= image_w / 2)
+                {
+                    road_state = ROAD_CURVE_R;
+                }
+            else if (l_border[close] < image_w / 2 && l_border[far] <= image_w / 2
+                && r_border[close] > image_w / 2 && r_border[far] <= image_w / 2)
+                {
+                    road_state = ROAD_CURVE_L;
+                }
+            else
+                {
+                    road_state = ROAD_STRAIGHT;
+                }
 
-		}
-		else if (isCORSS) {
-			road_state = ROAD_CORSSROAD;
+            }
+            else if (isCORSS) {
+                road_state = ROAD_CORSSROAD;
 
-		}
-	}
+            }
+        }
+    }
+    else {
+        road_state = ROAG_END;
+    }
 }
 
 

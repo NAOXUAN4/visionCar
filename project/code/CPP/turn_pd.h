@@ -9,7 +9,7 @@
 #define BSP_TURN_PD_H_
 #include "zf_common_headfile.h"
 
-#define k_pd 0.05
+#define k_pd 0.02
 #define PMAX 1
 
 extern float turn_out(float p_basic,float d);

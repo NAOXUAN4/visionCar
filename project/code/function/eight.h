@@ -40,6 +40,7 @@ extern void eight_all_in_one(uint8 (*)[image_w]); //直接在中断或循环里�
 #define ROAD_CURVE_L 2
 #define ROAD_CURVE_R 3
 #define ROAD_CORSSROAD 4
+#define ROAG_END 5
 
 extern uint8 road_state;
 extern uint8 isEnd; //判断是否到达终点

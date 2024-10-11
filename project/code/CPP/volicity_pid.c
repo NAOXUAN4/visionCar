@@ -39,22 +39,22 @@ void PIDR_init()
     pidR.volicity_out = 0;
 }
 
-float volicity_Lget(struct valuepid L)
+float volicity_Lget(struct valuepid L,float expect_speed)
 {
-    float expect_speed,incrementSpeed;
-    switch (road_state) {
-        case ROAD_STRAIGHT:expect_speed = STRAITSPEED;
-            break;
-        case ROAD_CURVE_L:expect_speed = CURVESPEED1;
-            break;
-        case ROAD_CURVE_R:expect_speed = CURVESPEED2;
-            break;
-        case ROAD_CORSSROAD:expect_speed = CROSSSPEED;
-            break;
-        default:
-            break;
-    }
-    L.volicity_out = encoder_get(1);
+    float incrementSpeed;
+//    switch (road_state) {
+//        case ROAD_STRAIGHT:expect_speed = STRAITSPEED;
+//            break;
+//        case ROAD_CURVE_L:expect_speed = CURVESPEED1;
+//            break;
+//        case ROAD_CURVE_R:expect_speed = CURVESPEED2;
+//            break;
+//        case ROAD_CORSSROAD:expect_speed = CROSSSPEED;
+//            break;
+//        default:
+//            break;
+//    }
+    L.volicity_out = encoder_get(ENCODER_LEFT);
     L.error = expect_speed -L.volicity_out;
     incrementSpeed = L.p*(L.error-L.error_last)+L.i*L.error+L.d*(L.error-2*L.error_last+L.error_pre);
     L.volicity_out+=incrementSpeed;

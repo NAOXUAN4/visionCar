@@ -1,11 +1,11 @@
 sdk/Peripheral/ch32v30x_opa.o: \
- G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/libraries/sdk/Peripheral/ch32v30x_opa.c \
- G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/libraries/sdk/Peripheral/ch32v30x_opa.h \
- G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/libraries/sdk/Peripheral/ch32v30x.h \
- G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Core/core_riscv.h
+ E:/proJectLibrary/cybercar/visionCar-eight_Dev(2)/libraries/sdk/Peripheral/ch32v30x_opa.c \
+ E:/proJectLibrary/cybercar/visionCar-eight_Dev(2)/libraries/sdk/Peripheral/ch32v30x_opa.h \
+ E:/proJectLibrary/cybercar/visionCar-eight_Dev(2)/libraries/sdk/Peripheral/ch32v30x.h \
+ E:\proJectLibrary\cybercar\visionCar-eight_Dev(2)\libraries\sdk\Core/core_riscv.h
 
-G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/libraries/sdk/Peripheral/ch32v30x_opa.h:
+E:/proJectLibrary/cybercar/visionCar-eight_Dev(2)/libraries/sdk/Peripheral/ch32v30x_opa.h:
 
-G:/Naoxuan/download/visionCar-eight_Dev/visionCar-eight_Dev/libraries/sdk/Peripheral/ch32v30x.h:
+E:/proJectLibrary/cybercar/visionCar-eight_Dev(2)/libraries/sdk/Peripheral/ch32v30x.h:
 
-G:\Naoxuan\download\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Core/core_riscv.h:
+E:\proJectLibrary\cybercar\visionCar-eight_Dev(2)\libraries\sdk\Core/core_riscv.h:
