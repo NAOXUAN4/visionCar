@@ -59,7 +59,7 @@ void Init(void)
 
 int main(void)
 {
-    float left_speed1,right_speed1;
+  //  float left_speed1,right_speed1;
     clock_init(SYSTEM_CLOCK_120M);      // 初始化芯片时钟 工作频率为 120MHz
     debug_init();                       // 务必保留，本函数用于初始化MPU 时钟 调试串口
 
@@ -85,8 +85,8 @@ int main(void)
             inte_control();
             mt9v03x_finish_flag= 0;
        }
-//       int l,r;
-//       float a;
+  //     int l,r;
+ //      float a;
 //       //wheel_ctrl(WHEEL_LEFT, 2000);
 //       //wheel_ctrl(WHEEL_RIGH, 2000);
 //       a = volicity_Rget(pidR,32);
@@ -96,11 +96,13 @@ int main(void)
 //       r = encoder_get(ENCODER_RIGH);
 //       //tft180_show_int(0, 0, l,5);
 //       tft180_show_int(0, 20, r,5);
-        //left_speed1 = volicity_Lget(pidL,25);
-       // right_speed1 = volicity_Rget(pidR,25);
-        //tft180_show_float(0,0,right_speed1,4,2);
-        //wheel_ctrl(WHEEL_LEFT,(int)left_speed1);
-        //wheel_ctrl(WHEEL_RIGH,(int)right_speed1);
+//        left_speed1 = volicity_Lget(pidL,30);
+//        right_speed1 = volicity_Rget(pidR,30);
+//        tft180_show_float(0,0,right_speed1,4,2);
+//        tft180_show_float(20,0,left_speed1,4,2);
+//        wheel_ctrl(WHEEL_LEFT,(int)left_speed1);
+//        wheel_ctrl(WHEEL_RIGH,(int)right_speed1);
+        //steer_SetAngle(85);
     }
 }
 

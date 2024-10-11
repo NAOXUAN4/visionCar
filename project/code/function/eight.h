@@ -43,7 +43,9 @@ extern void eight_all_in_one(uint8 (*)[image_w]); //直接在中断或循环里�
 #define ROAG_END 5
 
 extern uint8 road_state;
+extern uint8 road_state_last;  //记录上一次状态
 extern uint8 isEnd; //判断是否到达终点
+extern uint8 is_cross2Miss;  //是否已经进入十字
 
 #endif /*_IMAGE_H*/
 

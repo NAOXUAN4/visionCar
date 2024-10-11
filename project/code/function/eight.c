@@ -183,7 +183,7 @@ int16 limit1(int16 x, int16 y)
 日期：24/9/3
 注释：已在开头声明
 */
-uint8 hightest = 10;//定义一个最高行，tip：这里的最高指的是y值的最小
+uint8 hightest = 20;//定义一个最高行，tip：这里的最高指的是y值的最小
 uint8 int2char[] = {'.','#','=','&'};
 uint8 wb[image_h][image_w] = {{0}};
 
@@ -1113,30 +1113,31 @@ void calculate_s_i(uint8 start, uint8 end, uint8 *border, float *slope_rate, flo
 }
 
 
-uint8 cross_state_array[8];    //1:true  0:false
+uint8 cross_state_array[8] = {0,0,0,0,0,0,0,0};    //1:true  0:false
 /**
  * ----------------------------------------------------------
  * @name cross_state_Denoising
  * @brief 列表去除噪声
  * @param [in] uint8 threshold		输入阈值
- * @param [in] bool *isCORSS		输出是否为十字状态
  * @author Yian
  * @date 2024年10月11日
  * @note 
 **/
-void cross_state_Denoising(uint8 threshold, bool *isCORSS_, bool isCORSS_Now)
+bool isCORSS = false;
+void cross_state_Denoising(uint8 threshold,bool cross_Now)
 {
-	uint8 sum = 0;
-	for (uint8 i = 1; i < 7; i++)
+
+	uint8 sum = 0;  //默认当前isCross
+	for (uint8 i = 1; i < 8; i++)
 	{
 		cross_state_array[i - 1] = cross_state_array[i];
 		if(cross_state_array[i - 1] == 1){sum++;}
 	}
-	cross_state_array[7] = (isCORSS_Now?1:0);
-	sum += cross_state_array[7];
-
-	if (sum >= threshold) {isCORSS_ = true; }
-	else {isCORSS_ = false;}
+	cross_state_array[7] = (cross_Now?1:0);
+	sum+=cross_state_array[7];
+	//tft180_show_uint(75, 10, sum, 2);
+	if (sum >= threshold) {isCORSS = true; }
+	else {isCORSS = false;}
 	
 	
 	
@@ -1169,7 +1170,7 @@ void cross_state_Denoising(uint8 threshold, bool *isCORSS_, bool isCORSS_Now)
 *     -<em>false</em> fail
 *     -<em>true</em> succeed
  */
-bool isCORSS = false;
+
 bool is_cross_line(uint16 (*point_border_L)[2],uint16 (*point_border_R)[2], uint16 n_L, uint16 n_R); //判断是否为十字第二条件（n 个同高度的消失点）
 void cross_fill(uint8(*image)[image_w], uint8 *l_border, uint8 *r_border, uint16 total_num_l, uint16 total_num_r,
 										 uint16 *dir_l, uint16 *dir_r, uint16(*points_l)[2], uint16(*points_r)[2])
@@ -1202,12 +1203,13 @@ void cross_fill(uint8(*image)[image_w], uint8 *l_border, uint8 *r_border, uint16
     // tft180_show_uint(65, 85, break_num_r, 3);
     // tft180_show_int(65, 100, 6, 1);
 
-
+	bool cross_state_now = 0;
 	if (break_num_l && break_num_r 
 			&& is_cross_line(points_l,points_r,data_stastics_l,data_stastics_r))//进入十字补条件1：两边生长方向都符合条件，条件2：两边有n个等高的消失线          // && image[image_h - 1][4] && image[image_h - 1][image_w - 4]
 	{
 		//isCORSS = true;   //十字标志位
-		cross_state_Denoising(3, &isCORSS, true);
+	    cross_state_now = 1;
+
 
 //		//计算斜率
 //
@@ -1256,6 +1258,7 @@ void cross_fill(uint8(*image)[image_w], uint8 *l_border, uint8 *r_border, uint16
 //			r_border[i] = limit_a_b(r_border[i], border_min, border_max);
 //		}
 	}
+	cross_state_Denoising(3,cross_state_now);
 
 }
 
@@ -1296,6 +1299,33 @@ bool is_cross_line(uint16 (*point_border_L)[2],uint16 (*point_border_R)[2], uint
 		return true;
 	}
 	return false;
+}
+
+uint8 is_cross2Miss = 0;
+/**
+ * ----------------------------------------------------------
+ * @name cross_Line_fix
+ * @brief  没有补线的十字姿态修复
+ * @author yian 
+ * @date 2024年10月12日
+ * @note 
+**/
+void cross_Line_fix(uint8 *l_border, uint8 *r_border , uint8 check_height,uint8 threshold)
+{
+	uint8 l_miss = 0;
+	uint8 r_miss = 0;
+	for(int i = start_Line_total; i > check_height; i--)
+	{
+		if (l_border[i] == 255){l_miss++;}
+		if (r_border[i] == 255){r_miss++;}
+	}
+	if (l_miss >= threshold && r_miss >= threshold)
+	{
+		is_cross2Miss = 1;
+	}
+	else { is_cross2Miss = 0; }
+	
+	
 }
 
 
@@ -1598,6 +1628,7 @@ void draw_output_image()
  * @note 
 **/
 bool angleVaild = 0;
+uint8 road_state_last = 0;
 void deter_roadState()
 {
 //	if(data_stastics_l > 3 || data_stastics_r > 3)
@@ -1634,6 +1665,7 @@ void deter_roadState()
     else {
         road_state = ROAG_END;
     }
+    road_state_last = road_state;
 }
 
 
@@ -1684,7 +1716,7 @@ void eight_all_in_one(uint8 (*input_image)[image_w]){
     image_cpy(input_image);
     image_process();
 
-    angleVaild = angleErr_cal(WEIGHT_CURVE, center_line, start_Line_total, hightest);
+    angleVaild = angleErr_cal(road_state_last, center_line, start_Line_total, hightest);
 //    angleErr_slope(center_line, image_h-2, hightest);
 
     draw_output_image();

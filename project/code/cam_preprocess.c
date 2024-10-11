@@ -26,8 +26,8 @@ Img_Config ImgConf =
 {
 	.Threshold = 0,
 	.minThres = 65,
-	.maxThres = 190,
-	.white_threshold = 0.25f,
+	.maxThres = 180,
+	.white_threshold = 0.2f,
 };
 
 
