@@ -1129,8 +1129,8 @@ void cross_state_Denoising(uint8 threshold, bool *isCORSS_, bool isCORSS_Now)
 	uint8 sum = 0;
 	for (uint8 i = 1; i < 7; i++)
 	{
-		cross_state_array[i] = cross_state_array[i + 1];
-		if(cross_state_array[i] == 1){sum++;}
+		cross_state_array[i - 1] = cross_state_array[i];
+		if(cross_state_array[i - 1] == 1){sum++;}
 	}
 	cross_state_array[7] = (isCORSS_Now?1:0);
 	sum += cross_state_array[7];
