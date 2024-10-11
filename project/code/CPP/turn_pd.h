@@ -9,9 +9,15 @@
 #define BSP_TURN_PD_H_
 #include "zf_common_headfile.h"
 
+<<<<<<< Updated upstream
 #define k_pd 0
+=======
+#define k_pd 0.032
+>>>>>>> Stashed changes
 #define PMAX 1
 
+float fab(float a);
+float limitatiion(float b,float c);
 extern float turn_out(float p_basic,float d);
 extern float error_last;
 

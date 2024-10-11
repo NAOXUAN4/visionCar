@@ -9,13 +9,20 @@
 #include "angleErr.h"
 #include "lib/Slope_Calculate.h"
 #include <stdio.h>
+#include "Ourcode_headfile.h"
 #include <stdbool.h>
 
 float midline_f,midline_fff, midline_ff, weightSum,middleStandard = image_w>>1;
 float angle_Err;
 
 
-uint8  weight1[60] = {    };
+uint8  weight1[60] = {                  //0为图像最顶行
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+        3, 3, 3, 3, 5, 5, 5, 5, 5,10,
+       10,10,10,10,10,10,10,10,10,10,
+       10,10,10,10,10, 5, 5, 5, 5, 5,
+        3, 3, 3, 1, 1, 1, 0, 0, 0, 0,};    //基础    //注意斜率变化引起的跳变,要平滑
 
 uint8  weight2[60] = {                        //0为图像最顶行
          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -106,7 +113,13 @@ bool angleErr_cal(uint8 weight_num, uint8* middleLine, uint8 lo, uint8 hi){
     midline_fff = midline_ff;
     midline_ff  = midline_f;
     midline_f = angle_Err;
-    angle_Err = midline_fff * 0.50f + midline_ff * 0.30f + midline_f * 0.20f;
+//
+//    if (_abs(angle_Err - midline_fff) > _abs(midline_fff / 5)) {
+//        angle_Err = midline_fff + (angle_Err - midline_fff) / 5;
+//    } //斜率平滑,每次最大增大20％
+
+    angle_Err = midline_fff * 0.6f + midline_ff * 0.3f + midline_f * 0.1f;
+
     angle_Err = angle_Err > 0 ? angle_Err > (float)angleErr_range ? (float)angleErr_range : angle_Err
                      : - angle_Err > (float)angleErr_range ? (float)(- angleErr_range) : angle_Err;
 

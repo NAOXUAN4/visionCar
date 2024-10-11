@@ -9,5 +9,5 @@
 void steertimer_init(void)
 {
     timer_init(TIM_3, TIMER_MS);
-    pit_init(TIM3_PIT, 1000);
+    pit_init(TIM3_PIT, 5);
 }

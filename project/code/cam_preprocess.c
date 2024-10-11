@@ -25,9 +25,15 @@
 Img_Config ImgConf =
 {
 	.Threshold = 0,
+<<<<<<< Updated upstream
 	.minThres = 30,
 	.maxThres = 180,
 	.white_threshold = 0.30f,
+=======
+	.minThres = 65,
+	.maxThres = 180,
+	.white_threshold = 0.2f,
+>>>>>>> Stashed changes
 };
 
 

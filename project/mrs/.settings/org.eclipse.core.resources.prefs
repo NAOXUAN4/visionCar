@@ -4,10 +4,14 @@ encoding//code/APP/UI.h=UTF-8
 encoding//code/cam_preprocess.c=UTF-8
 encoding//code/cam_preprocess.h=UTF-8
 encoding//code/function/angleErr.c=UTF-8
+<<<<<<< Updated upstream
 encoding//code/function/angleErr.h=UTF-8
 encoding//code/function/binData.h=UTF-8
 encoding//code/function/eight..c=UTF-8
 encoding//code/function/eight.h=UTF-8
+=======
+encoding//code/function/eight.c=UTF-8
+>>>>>>> Stashed changes
 encoding//zf_device/zf_device_dl1a.c=UTF-8
 encoding//zf_device/zf_device_dl1a.h=UTF-8
 encoding//zf_device/zf_device_dm1xa.c=UTF-8

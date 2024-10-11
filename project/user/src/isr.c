@@ -305,8 +305,16 @@ void TIM3_IRQHandler(void)
 {
     if(TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)
     {
-        TIM_ClearITPendingBit(TIM3, TIM_IT_Update );
 
+        TIM_ClearITPendingBit(TIM3, TIM_IT_Update );
+        //int l,r;
+//        float left_speed1,right_speed1;
+//            left_speed1 = volicity_Lget(pidL,30);
+//            right_speed1 = volicity_Rget(pidR,30);
+//            tft180_show_float(0,0,right_speed1,4,2);
+//            tft180_show_float(40,0,left_speed1,4,2);
+//            wheel_ctrl(WHEEL_LEFT,(int)left_speed1);
+//            wheel_ctrl(WHEEL_RIGH,(int)right_speed1);
 
     }
 }
