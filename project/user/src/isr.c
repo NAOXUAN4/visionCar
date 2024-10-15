@@ -306,6 +306,7 @@ void TIM3_IRQHandler(void)
     if(TIM_GetITStatus(TIM3, TIM_IT_Update) != RESET)
     {
 
+        steer_SetAngle(85+move_angle);
         TIM_ClearITPendingBit(TIM3, TIM_IT_Update );
         //int l,r;
 //        float left_speed1,right_speed1;

@@ -16,13 +16,13 @@ float midline_f,midline_fff, midline_ff, weightSum,middleStandard = image_w>>1;
 float angle_Err;
 
 
-uint8  weight1[60] = {                  //0为图像最顶行
+uint8  weight1[60] = {                  //十字权重
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
         3, 3, 3, 3, 5, 5, 5, 5, 5,10,
        10,10,10,10,10,10,10,10,10,10,
        10,10,10,10,10, 5, 5, 5, 5, 5,
-        3, 3, 3, 1, 1, 1, 0, 0, 0, 0,};    //基础    //注意斜率变化引起的跳变,要平滑
+        3, 3, 3, 1, 1, 1, 0, 0, 0, 0,};    
 
 uint8  weight2[60] = {                        //0为图像最顶行
          0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
@@ -80,7 +80,7 @@ uint8  weight2[60] = {                        //0为图像最顶行
 **/
 bool angleErr_cal(uint8 weight_num, uint8* middleLine, uint8 lo, uint8 hi){
 
-    float  weightSum,lineSum;
+    float  weightSum,lineSum, cross_fix_bias;
     bool isValid = false;
 
 
@@ -108,6 +108,8 @@ bool angleErr_cal(uint8 weight_num, uint8* middleLine, uint8 lo, uint8 hi){
         }
     } 
 
+//    cross_fix_bias = ((is_cross2Miss || road_state == ROAD_CORSSROAD)?1.0:0.0 )* (-3.0);
+
 
     angle_Err = (float)lineSum / weightSum - middleStandard;
     midline_fff = midline_ff;
@@ -128,8 +130,8 @@ bool angleErr_cal(uint8 weight_num, uint8* middleLine, uint8 lo, uint8 hi){
 
 
 
-float slope;
- int x[20], y[20],num = -1;  
+// float slope;
+//  int x[20], y[20],num = -1;  
 /**
  * ----------------------------------------------------------
  * @name 

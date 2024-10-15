@@ -2,8 +2,8 @@
  * UI.c
  *
  *      Author: annanyi
-  *             ¸ÃÄ£¿éÎªUIÄ£¿é£¬¸ºÔðUI»æÖÆÒÔ¼°¸ù¾ÝÓÃ»§Ê¹ÓÃUIµÄÐÐÎª¶Ôµ±Ç°ÏµÍ³×´Ì¬×÷³öÐÞ¸Ä£¨¸Ä±ästate_now£©
-  *             ¶ÔÍâµÄ½Ó¿ÚÎªcursor_active()
+  *             ï¿½ï¿½Ä£ï¿½ï¿½ÎªUIÄ£ï¿½é£¬ï¿½ï¿½ï¿½ï¿½UIï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã»ï¿½Ê¹ï¿½ï¿½UIï¿½ï¿½ï¿½ï¿½Îªï¿½Ôµï¿½Ç°ÏµÍ³×´Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä£ï¿½ï¿½Ä±ï¿½state_nowï¿½ï¿½
+  *             ï¿½ï¿½ï¿½ï¿½Ä½Ó¿ï¿½Îªcursor_active()
  */
 
 #include "zf_common_headfile.h"
@@ -16,7 +16,7 @@ uint8 Curser_Now = 0;
 uint8 menu_str[4][3] = {{2,3,4},
                         {0,0,0},
                         {0,0,0},
-                        {0,0,0}};  //²Ëµ¥¹ØÏµÓ³Éä±í
+                        {0,0,0}};  //ï¿½Ëµï¿½ï¿½ï¿½ÏµÓ³ï¿½ï¿½ï¿½
 
 void UI_Init(void)
 {
@@ -24,7 +24,7 @@ void UI_Init(void)
     tft180_clear();
     tft180_full(RGB565_BLUE);
     tft180_set_color(RGB565_WHITE, RGB565_BLUE);
-    UI_Update(state_now);    //Ê×´Îupdate
+    UI_Update(state_now);    //ï¿½×´ï¿½update
 }
 
 void UI_Update(uint8 state)
@@ -34,11 +34,11 @@ void UI_Update(uint8 state)
     case STATE_HOME:
         UI_Home();break;
     case STATE_QUICKRUN:
-        UI_QucikRun();break;     //ºÍcameraÍ¬Àí
+        UI_QucikRun();break;     //ï¿½ï¿½cameraÍ¬ï¿½ï¿½
     case STATE_INFO:
         UI_INFO();break;
     case STATE_CAMERAONLY:
-        UI_CameraONLY();break;   //ÐèÒª¸ßÆµµ÷ÓÃÀ´ÊµÏÖÍ¼ÏñË¢ÐÂ
+        UI_CameraONLY();break;   //ï¿½ï¿½Òªï¿½ï¿½Æµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½Í¼ï¿½ï¿½Ë¢ï¿½ï¿½
     default:
         UI_Home();break;
     }
@@ -54,7 +54,7 @@ void UI_cursor_render(uint8 Line)
 /**
  * ----------------------------------------------------------
  * @name : UI_cursor_active
- * @brief ¶ÁÈ¡KEY£¬¸Ä±íUI×´Ì¬µÄºËÐÄº¯Êý
+ * @brief ï¿½ï¿½È¡KEYï¿½ï¿½ï¿½Ä±ï¿½UI×´Ì¬ï¿½Äºï¿½ï¿½Äºï¿½ï¿½ï¿½
  * @param uint8 key
  * @author yian
  **/
@@ -64,20 +64,20 @@ void UI_cursor_active(uint8 key)
     switch (state_now)
     {
 
-    case STATE_HOME: // µ±Ä¿Ç°´¦ÓÚhome
+    case STATE_HOME: // ï¿½ï¿½Ä¿Ç°ï¿½ï¿½ï¿½ï¿½home
         tft180_full(RGB565_BLUE);
         switch (key)
         {
-        case KEY_DOWM:   //ÏòÏÂÒÆ¶¯¹â±ê£¬²»ÐÞ¸ÄUI×´Ì¬
-            Curser_Now = (Curser_Now + 1)%3;    //Ä¬ÈÏHOME²Ëµ¥Èý¸ö¹¦ÄÜ
+        case KEY_DOWM:   //ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ê£¬ï¿½ï¿½ï¿½Þ¸ï¿½UI×´Ì¬
+            Curser_Now = (Curser_Now + 1)%3;    //Ä¬ï¿½ï¿½HOMEï¿½Ëµï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             UI_Update(state_now);
             break;
-        case KEY_UP:  //ÏòÉÏÒÆ¶¯¹â±ê£¬²»ÐÞ¸ÄUI×´Ì¬
+        case KEY_UP:  //ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ê£¬ï¿½ï¿½ï¿½Þ¸ï¿½UI×´Ì¬
             Curser_Now = (Curser_Now - 1+3)%3;
             UI_Update(state_now);
             break;
-        case KEY_COMFIRM:   //È·ÈÏ¼ü
-            state_now = menu_str[state_now - 1][Curser_Now];  //¸ù¾Ýµ±Ç°¹â±êÍ£ÁôµÄÎ»ÖÃ£¬È·¶¨½øÈëÄÄ¸ö×´Ì¬,Ê¹ÓÃ²Ëµ¥¹ØÏµÓ³Éä±í
+        case KEY_COMFIRM:   //È·ï¿½Ï¼ï¿½
+            state_now = menu_str[state_now - 1][Curser_Now];  //ï¿½ï¿½ï¿½Ýµï¿½Ç°ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½Î»ï¿½Ã£ï¿½È·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¸ï¿½×´Ì¬,Ê¹ï¿½Ã²Ëµï¿½ï¿½ï¿½ÏµÓ³ï¿½ï¿½ï¿½
             Curser_Now = 0;
             UI_Update(state_now);
            break;
@@ -90,7 +90,7 @@ void UI_cursor_active(uint8 key)
     case STATE_CAMERAONLY:
         switch(key){
         case KEY_BACK:
-            Curser_Now = state_now - 2;  //cursor 0~n-1,state 1~n  £¬ÓÖÒòÎªstate1 ÊÇhome ËùÒÔ-2
+            Curser_Now = state_now - 2;  //cursor 0~n-1,state 1~n  ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªstate1 ï¿½ï¿½home ï¿½ï¿½ï¿½ï¿½-2
             state_now = STATE_HOME;
             UI_Update(state_now);
             break;
@@ -107,11 +107,11 @@ void UI_cursor_active(uint8 key)
 void UI_Home() // HOME_STATE
 {
     tft180_clear();
-    tft180_full(RGB565_BLUE);  //ÖØÖÃ½çÃæ
-    UI_cursor_render(Curser_Now);  //»æÖÆ¹â±ê
+    tft180_full(RGB565_BLUE);  //ï¿½ï¿½ï¿½Ã½ï¿½ï¿½ï¿½
+    UI_cursor_render(Curser_Now);  //ï¿½ï¿½ï¿½Æ¹ï¿½ï¿½
 
 
-    // »æÖÆHOME²Ëµ¥
+    // ï¿½ï¿½ï¿½ï¿½HOMEï¿½Ëµï¿½
     tft180_show_string(20, 0 + 30, "QUICK RUN");
     tft180_show_string(20, 20 + 30, "INFO");
     tft180_show_string(20, 40 + 30, "CAMERA ONLY");
@@ -119,9 +119,9 @@ void UI_Home() // HOME_STATE
 
 void UI_QucikRun()
 {
-    tft180_displayimage03x(mt9v03x_image[0], 60, 60);
-    tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
-    tft180_show_rgb565_image(65, 0, output_image, 60, 60, 60, 60, 1);
+    tft180_displayimage03x(mt9v03x_image[0], 60, 60);//Ô­Ê¼Í¼ï¿½ï¿½
+    //tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
+    tft180_show_rgb565_image(0, 65, (const uint16_t*)output_image, 60, 60, 60, 60, 1);
     tft180_show_float(65, 65, angle_Err, 3, 4);
     tft180_show_float(65, 85, move_angle, 2, 3);
 
@@ -130,31 +130,30 @@ void UI_QucikRun()
 void UI_INFO()
 {
 
-    tft180_displayimage03x(mt9v03x_image[0], 60, 60);
-    tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
-    tft180_show_rgb565_image(65, 0, output_image, 60, 60, 60, 60, 1);
-    tft180_show_float(65, 65, angle_Err, 3, 4);
-    tft180_show_float(65, 85, move_angle, 2, 3);
-    tft180_show_int(65,105,road_state,1);
-    switch(road_state){
-       case ROAD_CORSSROAD:tft180_show_string(140, 10, "+");break;
-       case ROAD_CURVE_L: tft180_show_string(140, 10, ")");break;
-       case ROAD_CURVE_R:tft180_show_string(140, 10, "(");break;
-       case ROAD_STRAIGHT:tft180_show_string(140, 10, "|");break;
-       default:tft180_show_string(140, 10, "X") ;break;
-    }
+    //tft180_displayimage03x(mt9v03x_image[0], 60, 60);//Ô­Ê¼Í¼ï¿½ï¿½
+//    tft180_show_gray_image(0,0,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
+//    tft180_show_rgb565_image(0, 65, (const uint16_t*)output_image, 60, 60, 60, 60, 1);
+    //tft180_show_float(65, 65, angle_Err, 3, 4);
+//    tft180_show_int(65,105,road_state,1);
+//    switch(road_state){
+//       case ROAD_CORSSROAD:tft180_show_string(140, 10, "+");break;
+//       case ROAD_CURVE_L: tft180_show_string(140, 10, ")");break;
+//       case ROAD_CURVE_R:tft180_show_string(140, 10, "(");break;
+//       case ROAD_STRAIGHT:tft180_show_string(140, 10, "|");break;
+//       default:tft180_show_string(140, 10, "X") ;break;
+    //}
 }
 void UI_CameraONLY()
 {
 
-    tft180_displayimage03x(mt9v03x_image[0], 60, 60);//Ô­Ê¼Í¼Ïñ
-    tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
-    tft180_show_rgb565_image(65, 0, (const uint16_t*)output_image, 60, 60, 60, 60, 1);
+    tft180_displayimage03x(mt9v03x_image[0], 60, 60);//Ô­Ê¼Í¼ï¿½ï¿½
+    //tft180_show_gray_image(0,65,&BinaryImg_CDM[0][0],IMG_COL,IMG_ROW,60,60,1);
+    tft180_show_rgb565_image(0, 65, (const uint16_t*)output_image, 60, 60, 60, 60, 1);
 
-    tft180_show_float(65, 65, angle_Err, 3, 4);
+//    tft180_show_float(65, 65, angle_Err, 3, 4);
 
 
-    //µÀÂ·×´Ì¬ÏÔÊ¾
+    //ï¿½ï¿½Â·×´Ì¬ï¿½ï¿½Ê¾
     switch(road_state){
     case ROAD_CORSSROAD:tft180_show_string(140, 10, "+");break;
     case ROAD_CURVE_L: tft180_show_string(140, 10, ")");break;

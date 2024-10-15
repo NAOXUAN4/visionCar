@@ -29,7 +29,6 @@ typedef unsigned           int uint32;
 
 extern uint8 original_image[image_h][image_w];
 extern uint8 bin_image[image_h][image_w];//图像数组
-
 extern uint16 output_image[image_h][image_w];  //输出彩色图像
 
 
@@ -41,8 +40,13 @@ extern void eight_all_in_one(uint8 (*)[image_w]); //直接在中断或循环里�
 #define ROAD_CURVE_L 2
 #define ROAD_CURVE_R 3
 #define ROAD_CORSSROAD 4
+#define ROAG_END 5
 
 extern uint8 road_state;
+extern uint8 road_state_last;  //记录上一次状态
+extern uint8 isEnd; //判断是否到达终点
+extern uint8 is_cross2Miss;  //是否已经进入十字
+extern uint8 is_obs;  //障碍标志位
 
 #endif /*_IMAGE_H*/
 

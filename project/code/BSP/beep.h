@@ -13,6 +13,6 @@
 #define BEEP_PIN   C13
 
 void beep_init(void);
-void beep_MakeSound(int count);
+void beep_MakeSound(int count,int timems);
 
 #endif /* BSP_BEEP_H_ */

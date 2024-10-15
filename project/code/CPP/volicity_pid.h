@@ -28,7 +28,7 @@ extern struct valuepid pidR;
 
 void PIDL_init();
 void PIDR_init();
-float volicity_Lget(struct valuepid L);
+float volicity_Lget(struct valuepid L,float expect_speed);
 float volicity_Rget(struct valuepid R,float expect_speed);
 
 #endif /* CPP_VOLICITY_PID_H_ */
