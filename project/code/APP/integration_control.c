@@ -22,7 +22,7 @@ void inte_control(void)
 
 
 /*
- * ÓëUI_xxx²»Í¬µÄÊÇÕâÀïÊÇ¸ü¸ß²ã¼¶µÄ¿ØÖÆ£¬UI_xxxÖ»¸ºÔðÍ¼ÏñË¢ÐÂ
+ * ï¿½ï¿½UI_xxxï¿½ï¿½Í¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç¸ï¿½ï¿½ß²ã¼¶ï¿½Ä¿ï¿½ï¿½Æ£ï¿½UI_xxxÖ»ï¿½ï¿½ï¿½ï¿½Í¼ï¿½ï¿½Ë¢ï¿½ï¿½
  */
 
 void ctrl_QUICKRUN()
@@ -63,7 +63,7 @@ void ctrl_QUICKRUN()
     wheel_ctrl(WHEEL_LEFT,2000);
     */
 }
-int left_speed=2300,righ_speed=2300;//2100£¬p0.52,d1.12
+int left_speed=2300,righ_speed=2300;//2100ï¿½ï¿½p0.52,d1.12
 int a=0,i=0,j=0;
 float turnP=0.5,turnD=1.40;//0.5,1.38,2300 0.5,1.22,2100
 //int i=0,j=0,a=0;
@@ -75,14 +75,14 @@ void ctrl_INFO()
 //    int add_left=0,add_right=0;
     //do{
     eight_all_in_one(BinaryImg_CDM);
-    //ÅÜµÄ²»ÎÈÓÃ
+    //ï¿½ÜµÄ²ï¿½ï¿½ï¿½ï¿½ï¿½
     //if(road_state == 4){i++;if(i == 5){i = 0;j++;}}
     //if(i == 1){beep_MakeSound(1,100);left_speed = 1000;righ_speed = 1000;}
     //if(j == 2||j === 4){left_speed = 1500;righ_speed == 1500;}
-    //ÅÜµÄÎÈÓÃ
+    //ï¿½Üµï¿½ï¿½ï¿½ï¿½ï¿½
 //    if(road_state == 4){beep_MakeSound(1,500);i++;left_speed = 1000;righ_speed = 1000;}
 //    if(i == 2||i == 4){left_speed = 1500;righ_speed = 1500;}
-    //Ê®×Ö²íÂ··äÃùÆ÷Ïì£¬¸ù¾ÝËÙ¶È¸Ä±äÖ¡ÊýºÍ·äÃùÆ÷Ãù½ÐÊ±¼ä
+    //Ê®ï¿½Ö²ï¿½Â·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ì£¬ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶È¸Ä±ï¿½Ö¡ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
     if(road_state == 4){flag = 1;if(i == 0){beep_MakeSound(1,300);}}
     i+= flag;
     if(i==30){i=0;flag =0;}
@@ -90,7 +90,7 @@ void ctrl_INFO()
     //if(i==1){beep_MakeSound(1, 100);}
     //if(road_state == 4){beep_MakeSound(1, 100);}
     //if(i==5){i=0;beep_MakeSound(1, 100);}
-    //°ßÂíÏßÍ£³µ£¬¸ù¾ÝËÙ¶È¸Ä±ä¼ÓËÙ¶È
+    //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ù¶È¸Ä±ï¿½ï¿½ï¿½Ù¶ï¿½
     if(road_state == 5){a = -320;}
     //if(road_state == 5){wheel_ctrl(WHEEL_LEFT, 0);wheel_ctrl(WHEEL_RIGH, 0);}
     //beep_MakeSound(1);
@@ -102,12 +102,12 @@ void ctrl_INFO()
 //    wheel_ctrl(WHEEL_LEFT,righ_speed);
 //    wheel_ctrl(WHEEL_LEFT, left_speed);
 //    wheel_ctrl(WHEEL_RIGH, righ_speed);
-    //Ö±µÀÐ¡³µ¼ÓËÙ
+    //Ö±ï¿½ï¿½Ð¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 //    if(road_state == 1){a=10;if(left_speed>3000){left_speed=3000;}if(righ_speed>3000){righ_speed = 3000;}}
 //    if(road_state!=1&&road_state!=5){a = 0;left_speed=1800;righ_speed=1800;}
     //if(is_obs){flag1=1;j+=flag1;left_speed=1200;righ_speed=1200;turnP = 0.83;turnD = 0.5;}
     //if(j==10){flag1=0;j=0;left_speed = 2000;righ_speed = 2000;turnP = 0.535;turnD = 0.85;}
-    move_angle = turn_out(turnP,turnD);//0.65£¬0.55£¬1500//0.535£¬0.85£¬1800
+    move_angle = turn_out(turnP,turnD);//0.65ï¿½ï¿½0.55ï¿½ï¿½1500//0.535ï¿½ï¿½0.85ï¿½ï¿½1800
     //if(move_angle<5&&move_angle>-5){move_angle = 0;}
 //    if(move_angle > 20){move_angle = 20;}
 //    if(move_angle < -20){move_angle = -20;}
