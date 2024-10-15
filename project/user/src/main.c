@@ -51,8 +51,9 @@ void Init(void)
     encoder_init();
     beep_init();
 
-    PIDL_init();
-    PIDR_init();
+    //PIDL_init();
+    //PIDR_init();
+    pit_ms_init(TIM3_PIT,5);
     //steertimer_init();
 //    mt9v03x_set_exposure_time(3000);
 }

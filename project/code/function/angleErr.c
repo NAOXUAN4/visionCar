@@ -108,7 +108,7 @@ bool angleErr_cal(uint8 weight_num, uint8* middleLine, uint8 lo, uint8 hi){
         }
     } 
 
-    cross_fix_bias = (float)is_cross2Miss * (-5.0);
+//    cross_fix_bias = ((is_cross2Miss || road_state == ROAD_CORSSROAD)?1.0:0.0 )* (-3.0);
 
 
     angle_Err = (float)lineSum / weightSum - middleStandard;
@@ -120,7 +120,7 @@ bool angleErr_cal(uint8 weight_num, uint8* middleLine, uint8 lo, uint8 hi){
 //        angle_Err = midline_fff + (angle_Err - midline_fff) / 5;
 //    } //斜率平滑,每次最大增大20％
 
-    angle_Err = midline_fff * 0.6f + midline_ff * 0.3f + midline_f * 0.1f + cross_fix_bias;
+    angle_Err = midline_fff * 0.6f + midline_ff * 0.3f + midline_f * 0.1f;
 
     angle_Err = angle_Err > 0 ? angle_Err > (float)angleErr_range ? (float)angleErr_range : angle_Err
                      : - angle_Err > (float)angleErr_range ? (float)(- angleErr_range) : angle_Err;

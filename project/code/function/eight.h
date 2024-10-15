@@ -46,6 +46,7 @@ extern uint8 road_state;
 extern uint8 road_state_last;  //记录上一次状态
 extern uint8 isEnd; //判断是否到达终点
 extern uint8 is_cross2Miss;  //是否已经进入十字
+extern uint8 is_obs;  //障碍标志位
 
 #endif /*_IMAGE_H*/
 

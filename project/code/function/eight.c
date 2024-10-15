@@ -11,6 +11,7 @@
 
 
 uint8 road_state = 0;
+uint8 road_state_last = 0;
 uint8 start_Line_total = image_h - 5;
 
 
@@ -183,7 +184,7 @@ int16 limit1(int16 x, int16 y)
 日期：24/9/3
 注释：已在开头声明
 */
-uint8 hightest = 20;//定义一个最高行，tip：这里的最高指的是y值的最小
+uint8 hightest = 25;//定义一个最高行，tip：这里的最高指的是y值的最小
 uint8 int2char[] = {'.','#','=','&'};
 uint8 wb[image_h][image_w] = {{0}};
 
@@ -1258,7 +1259,7 @@ void cross_fill(uint8(*image)[image_w], uint8 *l_border, uint8 *r_border, uint16
 //			r_border[i] = limit_a_b(r_border[i], border_min, border_max);
 //		}
 	}
-	cross_state_Denoising(3,cross_state_now);
+	cross_state_Denoising(2,cross_state_now);
 
 }
 
@@ -1308,7 +1309,7 @@ uint8 is_cross2Miss = 0;
  * @brief  没有补线的十字姿态修复
  * @author yian 
  * @date 2024年10月12日
- * @note 
+ * @note 通过对进入十字路口后两端边宽的特征进行angleErr的操作
 **/
 void cross_Line_fix(uint8 *l_border, uint8 *r_border , uint8 check_height,uint8 threshold)
 {
@@ -1316,10 +1317,11 @@ void cross_Line_fix(uint8 *l_border, uint8 *r_border , uint8 check_height,uint8 
 	uint8 r_miss = 0;
 	for(int i = start_Line_total; i > check_height; i--)
 	{
-		if (l_border[i] == 255){l_miss++;}
-		if (r_border[i] == 255){r_miss++;}
+		if (l_border[i] == border_min){l_miss++;}
+		if (r_border[i] == border_max){r_miss++;}
 	}
-	if (l_miss >= threshold && r_miss >= threshold)
+
+	if (l_miss >= threshold && r_miss >= threshold && road_state_last != 0)
 	{
 		is_cross2Miss = 1;
 	}
@@ -1336,16 +1338,17 @@ void cross_Line_fix(uint8 *l_border, uint8 *r_border , uint8 check_height,uint8 
 * 返回值：修改的全局边界数组l_border r_border
 * 作者：Yian
 * 日期：2024年9月21日
-* 注释：排除远端消失点，减少远端消失对中线的干扰
+* 注释：排除远端消失点，减少远端消失对中线的干扰,注意,只有远端的消失点会被置255
 */
 void exclude_remote_miss(uint8 *l_border, uint8 *r_border)
 {
-    bool out_left_miss = false, out_right_miss = false;
+    bool out_left_miss = false;
+    bool out_right_miss = false;
     for (int i = hightest; i < image_h; i++)
     {
         if (!out_left_miss)
         {
-            if (l_border[i] == 1)
+            if (l_border[i] == 1 && i!=hightest)
             {
                 l_border[i] = 255;
             }
@@ -1357,7 +1360,7 @@ void exclude_remote_miss(uint8 *l_border, uint8 *r_border)
 
         if (!out_right_miss)
         {
-            if (r_border[i] == image_w - 2)
+            if (r_border[i] == image_w - 2 && i!=hightest)
             {
                 r_border[i] = 255;
             }
@@ -1460,48 +1463,87 @@ uint8 isEnd = 0;
 **/
 void detect_end(uint8 check_Line,uint8 block_w_MAX,uint8 block_w_MIN)
 {
-    uint8 start = l_border[check_Line];
-    uint8 end = r_border[check_Line];
 
-    uint8 block_sum = 0;
-    uint8 pixel_sum = 0;
-
-	uint8 pix_max = 0;
-	
-
-    for (uint8 i = start; i < end; i++)
+    for(uint8 ii = check_Line ; ii < start_Line_total; ii++)
     {
-        if(bin_image[check_Line][i] == black_pixel)
-        {
-            pixel_sum++;
-        }
+        uint8 start = l_border[ii];
+        uint8 end = r_border[ii];
 
-        else if (bin_image[check_Line][i] == white_pixel)
+        uint8 block_sum = 0;
+        uint8 pixel_sum = 0;
+
+        uint8 pix_max = 0;
+
+        for (uint8 i = start; i < end; i++)
         {
-            if (pixel_sum > block_w_MIN && pixel_sum < block_w_MAX)
+            if(bin_image[ii][i] == black_pixel)
             {
-                block_sum++;
+                pixel_sum++;
             }
 
-			if(pix_max < pixel_sum)
-			{
-				pix_max = pixel_sum;
-			}
-		
+            else if (bin_image[ii][i] == white_pixel)
+            {
+                if (pixel_sum > block_w_MIN && pixel_sum < block_w_MAX)
+                {
+                    block_sum++;
+                }
 
-            pixel_sum = 0;
+                if(pix_max < pixel_sum)
+                {
+                    pix_max = pixel_sum;
+                }
+
+
+                pixel_sum = 0;
+            }
+            if (block_sum > 2)
+            {
+                isEnd = 1;
+                break; //           isEnd = true;
+            }
         }
-        if (block_sum > 2)
-        {
-            isEnd = 1;
-            break; //           isEnd = true;
-        }
+        if(isEnd){break;}
     }
 
-//	tft180_show_uint(65, 65, block_sum, 3);
-//	tft180_show_uint(65, 95, pix_max, 3);
-	
+//  tft180_show_uint(65, 65, block_sum, 3);
+//  tft180_show_uint(65, 95, pix_max, 3);
+
 }
+
+
+uint8 is_obs = 0;
+uint8 road_w_array[20];
+/**
+ * ----------------------------------------------------------
+ * @name detect_obs
+ * @brief 识别障碍激活标志位
+ * @author yian
+ * @date 2024年10月12日
+ * @note 
+**/
+uint8 u=0;
+void detect_obs(uint8 *l_border, uint8 *r_border, uint8 hi, uint8 lo)
+{
+	uint16 road_w_sum = 0;
+	for(uint8 i = hi;i < lo;i++)
+	{
+		road_w_sum += r_border[i] - l_border[i];
+	}
+	uint16 road_w20_sum = 0;
+	for (uint8 i = 1; i < 20; i++)
+	{
+		road_w_array[i - 1] = road_w_array[i]; 
+		road_w20_sum += road_w_array[i - 1];
+	}
+	road_w20_sum += road_w_sum/(lo - hi);
+	road_w_array[19] = road_w_sum/(lo-hi);
+
+	if((float)road_w_sum / (float)(lo-hi) < (float)road_w20_sum/(20.0) / 5.0 * 3.0 ){is_obs = 1;}
+	else{is_obs = 0;}
+
+
+}
+
 
 
 /*
@@ -1550,7 +1592,11 @@ void image_process(void)
 
 		exclude_remote_miss(l_border, r_border);
 
-		detect_end(start_Line_total - 10, 5, 2);
+		//cross_Line_fix(l_border, r_border, start_Line_total - 5, 3);
+
+		
+
+
 
 		get_mid(l_border, r_border, center_line, hightest);
 
@@ -1573,7 +1619,7 @@ void draw_output_image()
     for (uint8 i = 0; i < image_h; i++) {
         for (uint8 ii = 0; ii < image_w; ii++) {
             if(bin_image[i][ii] == white_pixel)
-                output_image[i][ii] = RGB565_WHITE;
+                output_image[i][ii] = RGB565_GRAY;
             else {
                 output_image[i][ii] = RGB565_BLACK;
             }
@@ -1616,6 +1662,7 @@ void draw_output_image()
 	for(uint8 i = 0;i<image_w;i++)
 	{
 	    output_image[start_Line_total - 10][i] = RGB565_YELLOW;
+	    output_image[hightest][i] = RGB565_WHITE;
 	}
 }
 
@@ -1628,7 +1675,7 @@ void draw_output_image()
  * @note 
 **/
 bool angleVaild = 0;
-uint8 road_state_last = 0;
+
 void deter_roadState()
 {
 //	if(data_stastics_l > 3 || data_stastics_r > 3)
@@ -1700,6 +1747,8 @@ void eight_init()
 
     memset(output_image,0,sizeof(output_image));
 
+
+
 }
 
 
@@ -1716,13 +1765,17 @@ void eight_all_in_one(uint8 (*input_image)[image_w]){
     image_cpy(input_image);
     image_process();
 
+	detect_end(start_Line_total - 20, 5, 2);
+	detect_obs(l_border, r_border, hightest + 3,hightest + 12);
+ 
     angleVaild = angleErr_cal(road_state_last, center_line, start_Line_total, hightest);
 //    angleErr_slope(center_line, image_h-2, hightest);
 
     draw_output_image();
     deter_roadState();
 
-    tft180_show_uint(90, 65, isEnd, 2);
+    //tft180_show_uint(90, 65, isEnd, 2);
+    //tft180_show_int(65, 20, is_cross2Miss, 2);
 }
 
 

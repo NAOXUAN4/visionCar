@@ -1,14 +1,14 @@
 sdk/Peripheral/ch32v30x_pwr.o: \
- C:/Users/Zh319/Desktop/新建文件夹/visionCar-eight_Dev(1)/visionCar-eight_Dev(1)/visionCar-eight_Dev/visionCar-eight_Dev(1)/visionCar-eight_Dev/libraries/sdk/Peripheral/ch32v30x_pwr.c \
- C:/Users/Zh319/Desktop/新建文件夹/visionCar-eight_Dev(1)/visionCar-eight_Dev(1)/visionCar-eight_Dev/visionCar-eight_Dev(1)/visionCar-eight_Dev/libraries/sdk/Peripheral/ch32v30x_pwr.h \
- C:/Users/Zh319/Desktop/新建文件夹/visionCar-eight_Dev(1)/visionCar-eight_Dev(1)/visionCar-eight_Dev/visionCar-eight_Dev(1)/visionCar-eight_Dev/libraries/sdk/Peripheral/ch32v30x.h \
- C:\Users\Zh319\Desktop\新建文件夹\visionCar-eight_Dev(1)\visionCar-eight_Dev(1)\visionCar-eight_Dev\visionCar-eight_Dev(1)\visionCar-eight_Dev\libraries\sdk\Core/core_riscv.h \
- C:/Users/Zh319/Desktop/新建文件夹/visionCar-eight_Dev(1)/visionCar-eight_Dev(1)/visionCar-eight_Dev/visionCar-eight_Dev(1)/visionCar-eight_Dev/libraries/sdk/Peripheral/ch32v30x_rcc.h
+ H:/projectLib/visionCar-eight_Dev(5)/libraries/sdk/Peripheral/ch32v30x_pwr.c \
+ H:/projectLib/visionCar-eight_Dev(5)/libraries/sdk/Peripheral/ch32v30x_pwr.h \
+ H:/projectLib/visionCar-eight_Dev(5)/libraries/sdk/Peripheral/ch32v30x.h \
+ H:\projectLib\visionCar-eight_Dev(5)\libraries\sdk\Core/core_riscv.h \
+ H:/projectLib/visionCar-eight_Dev(5)/libraries/sdk/Peripheral/ch32v30x_rcc.h
 
-C:/Users/Zh319/Desktop/新建文件夹/visionCar-eight_Dev(1)/visionCar-eight_Dev(1)/visionCar-eight_Dev/visionCar-eight_Dev(1)/visionCar-eight_Dev/libraries/sdk/Peripheral/ch32v30x_pwr.h:
+H:/projectLib/visionCar-eight_Dev(5)/libraries/sdk/Peripheral/ch32v30x_pwr.h:
 
-C:/Users/Zh319/Desktop/新建文件夹/visionCar-eight_Dev(1)/visionCar-eight_Dev(1)/visionCar-eight_Dev/visionCar-eight_Dev(1)/visionCar-eight_Dev/libraries/sdk/Peripheral/ch32v30x.h:
+H:/projectLib/visionCar-eight_Dev(5)/libraries/sdk/Peripheral/ch32v30x.h:
 
-C:\Users\Zh319\Desktop\新建文件夹\visionCar-eight_Dev(1)\visionCar-eight_Dev(1)\visionCar-eight_Dev\visionCar-eight_Dev(1)\visionCar-eight_Dev\libraries\sdk\Core/core_riscv.h:
+H:\projectLib\visionCar-eight_Dev(5)\libraries\sdk\Core/core_riscv.h:
 
-C:/Users/Zh319/Desktop/新建文件夹/visionCar-eight_Dev(1)/visionCar-eight_Dev(1)/visionCar-eight_Dev/visionCar-eight_Dev(1)/visionCar-eight_Dev/libraries/sdk/Peripheral/ch32v30x_rcc.h:
+H:/projectLib/visionCar-eight_Dev(5)/libraries/sdk/Peripheral/ch32v30x_rcc.h:
