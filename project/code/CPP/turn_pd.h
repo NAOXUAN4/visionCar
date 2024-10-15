@@ -9,6 +9,7 @@
 #define BSP_TURN_PD_H_
 #include "zf_common_headfile.h"
 
+#define k_pd 0.042//0.032
 #define PMAX 1
 
 float fab(float a);
