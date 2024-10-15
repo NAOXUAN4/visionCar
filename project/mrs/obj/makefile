@@ -1,5 +1,5 @@
 ################################################################################
-# MRS Version: 1.9.1
+# MRS Version: 1.9.0
 # 自动生成的文件。不要编辑！
 ################################################################################
 
@@ -61,7 +61,7 @@ all: vision_car_main.elf secondary-outputs
 
 # 工具调用
 vision_car_main.elf: $(OBJS) $(USER_OBJS)
-	@	@	riscv-none-embed-gcc -march=rv32imafc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -pedantic -Wunused -Wuninitialized -Wall  -g -T "H:\projectLib\visionCar-eight_Dev(5)\libraries\sdk\Ld\Link.ld" -nostartfiles -Xlinker --gc-sections -L"../" -L"H:\projectLib\visionCar-eight_Dev(5)\libraries\zf_device" -Wl,-Map,"vision_car_main.map" --specs=nano.specs -u _printf_float --specs=nosys.specs -Wl,--print-memory-usage -o "vision_car_main.elf" $(OBJS) $(USER_OBJS) $(LIBS)
+	@	@	riscv-none-embed-gcc -march=rv32imafc -mabi=ilp32f -msmall-data-limit=8 -mno-save-restore -O0 -fmessage-length=0 -fsigned-char -ffunction-sections -fdata-sections -fno-common -pedantic -Wunused -Wuninitialized -Wall  -g -T "C:\Users\Zh319\Desktop\新建文件夹\visionCar-eight_Dev(1)\visionCar-eight_Dev(1)\visionCar-eight_Dev\visionCar-eight_Dev(1)\visionCar-eight_Dev\visionCar-eight_Dev\libraries\sdk\Ld\Link.ld" -nostartfiles -Xlinker --gc-sections -L"../" -L"C:\Users\Zh319\Desktop\新建文件夹\visionCar-eight_Dev(1)\visionCar-eight_Dev(1)\visionCar-eight_Dev\visionCar-eight_Dev(1)\visionCar-eight_Dev\visionCar-eight_Dev\libraries\zf_device" -Wl,-Map,"vision_car_main.map" --specs=nano.specs -u _printf_float --specs=nosys.specs -Wl,--print-memory-usage -o "vision_car_main.elf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@	@
 vision_car_main.hex: vision_car_main.elf
 	@	riscv-none-embed-objcopy -O ihex "vision_car_main.elf"  "vision_car_main.hex"

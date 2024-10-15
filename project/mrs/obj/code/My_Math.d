@@ -1,5 +1,5 @@
 code/My_Math.o: \
- H:/projectLib/visionCar-eight_Dev(5)/project/code/My_Math.c \
- H:/projectLib/visionCar-eight_Dev(5)/project/code/My_Math.h
+ C:/Users/Zh319/Desktop/新建文件夹/visionCar-eight_Dev(1)/visionCar-eight_Dev(1)/visionCar-eight_Dev/visionCar-eight_Dev(1)/visionCar-eight_Dev/visionCar-eight_Dev/project/code/My_Math.c \
+ C:/Users/Zh319/Desktop/新建文件夹/visionCar-eight_Dev(1)/visionCar-eight_Dev(1)/visionCar-eight_Dev/visionCar-eight_Dev(1)/visionCar-eight_Dev/visionCar-eight_Dev/project/code/My_Math.h
 
-H:/projectLib/visionCar-eight_Dev(5)/project/code/My_Math.h:
+C:/Users/Zh319/Desktop/新建文件夹/visionCar-eight_Dev(1)/visionCar-eight_Dev(1)/visionCar-eight_Dev/visionCar-eight_Dev(1)/visionCar-eight_Dev/visionCar-eight_Dev/project/code/My_Math.h:
